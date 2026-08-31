@@ -164,19 +164,68 @@ Do not treat professional experience as automatic evidence of master's-level
 theoretical understanding, and do not treat rusty academic knowledge as
 absence of practical competence.
 
-## Next Session
+## Career Direction
 
-Continue PLAN mode.
+### Target Profile
 
-Next planning milestone:
+The learner is currently a Senior Software Engineer.
 
-1. Define the detailed master's-level competency and assessment model.
-2. Conduct a curriculum interview covering current technology stack,
-   engineering interests, desired capabilities, mathematics tolerance,
-   preferred specialization, and potential real-world problem domains.
-3. Design the diagnostic phase.
-4. Use the diagnostic results to decide what should be learned, refreshed,
-   accelerated, or skipped.
+The desired future direction is approximately:
 
-Do not begin substantial coursework until the learner explicitly decides to
-start.
+- 70% Expert Software Engineer / IC track
+- 30% Managerial / technical leadership capability
+
+The goal is not primarily to become a manager. The priority is developing
+strong technical depth while gaining enough leadership and management
+capability to operate effectively as a technical lead.
+
+### Development Areas
+
+Current areas the learner wants to improve:
+
+- Full-stack engineering fluency, coming from a stronger frontend background
+- System-level engineering capability
+- Technical decision-making and leadership
+- Production troubleshooting
+- Time management / engineering execution
+
+## Potential Flagship Project
+
+A strong candidate for a future major project is:
+
+> Build a serious software system that automates or assists QA processes,
+> motivated by the learner's current team having limited QA personnel.
+
+This is currently a **candidate direction, not a committed project**.
+
+The project should eventually be evaluated against:
+
+- real team/business value;
+- technical depth;
+- current relevance;
+- opportunities to apply Software Engineering and Quality Engineering;
+- opportunities to incorporate AI where genuinely useful;
+- measurable outcomes;
+- potential for later research.
+
+The project should not use AI merely because AI is fashionable.
+
+## Next Planning Session
+
+Continue the curriculum interview by examining the learner's actual
+engineering environment, including:
+
+- technology stack;
+- programming languages;
+- frontend/backend experience;
+- databases;
+- APIs and integrations;
+- deployment/infrastructure;
+- CI/CD;
+- testing tools;
+- system scale and complexity;
+- team structure;
+- typical engineering problems.
+
+After the curriculum interview, design the diagnostic phase and then use
+the results to construct the personalized competency map and curriculum.
