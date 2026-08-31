@@ -108,22 +108,36 @@ Use two interacting tracks:
 ### Engineering Track
 
 Software Engineering
+
 → Architecture & Systems
+
 → Quality & Reliability
+
 → AI Engineering
+
 → Intelligent Software Systems
+
 → Independent Research
+
 
 ### Foundations Track
 
 Algorithms/data structures
+
 Databases
+
 Networking
+
 Operating systems
+
 Concurrency
+
 Distributed systems
+
 Probability/statistics
+
 Discrete mathematics
+
 
 Foundations should be learned or refreshed **just in time** where possible,
 rather than forcing the learner through a complete undergraduate CS curriculum
