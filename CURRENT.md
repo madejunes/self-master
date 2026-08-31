@@ -40,19 +40,129 @@ with a strong connection to real-world and current engineering problems.
 7. Academic references should be a normal part of learning.
 8. The program must avoid becoming simply "ChatGPT teaches the user."
 
-## Open Design Questions
+## Starting-Point Assessment
 
-1. Define the master's-level competency model.
-2. Define the assessment/evidence system.
-3. Decide what foundational knowledge to learn versus skip.
-4. Define the academic reading/reference policy in more detail.
-5. Define project-selection criteria.
-6. Design the transition from engineering practice to research.
-7. Define eventual capstone/thesis requirements.
-8. Define how the assistant should challenge, examine, and critique the learner.
+### Professional Experience
+
+The learner has substantial practical software-engineering experience:
+
+* Requirements analysis — experienced
+* System/API design — experienced
+* Database design — experienced
+* Code review — experienced
+* Refactoring — experienced
+* CI/CD — some experience
+* Automated testing — experienced
+* Integration testing — experienced
+* Production troubleshooting — experienced, wants deeper capability
+* Observability — experienced
+* Technical/design decisions — experienced, wants deeper capability
+* Maintaining an existing codebase — 2–3 years of experience
+
+Areas with limited professional experience:
+
+* Software architecture
+* Distributed systems
+* Performance testing
+* Security
+
+### Quality Engineering
+
+Current profile: developer with substantial testing experience.
+
+The program should develop this toward broader Quality Engineering, reliability,
+verification/validation, and eventually AI-system evaluation.
+
+### AI
+
+The learner uses LLMs extensively but currently has limited understanding of
+underlying machine learning theory.
+
+AI learning should therefore eventually include the conceptual foundations
+rather than focusing primarily on prompt usage or application-level techniques.
+
+### Academic / CS Foundations
+
+The learner has a Bachelor's degree in Informatics Engineering, completed more
+than a decade ago.
+
+Current self-assessment:
+
+* Algorithms/data structures — weak
+* Databases — weak
+* Networking — weak
+* Operating systems — weak
+* Concurrency — weak
+* Distributed systems — weak
+* Probability/statistics — weak
+* Discrete mathematics — weak
+
+These should be treated as potentially rusty foundations, not automatically as
+zero knowledge. Future diagnostic exercises should distinguish forgotten
+knowledge, practical knowledge without theoretical grounding, and genuine gaps.
+
+## Curriculum Strategy
+
+Use two interacting tracks:
+
+### Engineering Track
+
+Software Engineering
+→ Architecture & Systems
+→ Quality & Reliability
+→ AI Engineering
+→ Intelligent Software Systems
+→ Independent Research
+
+### Foundations Track
+
+Algorithms/data structures
+Databases
+Networking
+Operating systems
+Concurrency
+Distributed systems
+Probability/statistics
+Discrete mathematics
+
+Foundations should be learned or refreshed **just in time** where possible,
+rather than forcing the learner through a complete undergraduate CS curriculum
+again.
+
+## Diagnostic Phase
+
+Before beginning substantial coursework, conduct a practical diagnostic
+phase using realistic engineering problems rather than primarily recall-based
+questions.
+
+The diagnostic should assess:
+
+* engineering reasoning;
+* system/design thinking;
+* architectural reasoning;
+* testing/quality reasoning;
+* debugging and production reasoning;
+* CS foundations;
+* ability to evaluate trade-offs;
+* ability to explain and defend decisions.
+
+Do not treat professional experience as automatic evidence of master's-level
+theoretical understanding, and do not treat rusty academic knowledge as
+absence of practical competence.
 
 ## Next Session
 
 Continue PLAN mode.
 
-Do **not** begin coursework unless the user explicitly decides to start.
+Next planning milestone:
+
+1. Define the detailed master's-level competency and assessment model.
+2. Conduct a curriculum interview covering current technology stack,
+   engineering interests, desired capabilities, mathematics tolerance,
+   preferred specialization, and potential real-world problem domains.
+3. Design the diagnostic phase.
+4. Use the diagnostic results to decide what should be learned, refreshed,
+   accelerated, or skipped.
+
+Do not begin substantial coursework until the learner explicitly decides to
+start.
