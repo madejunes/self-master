@@ -6,85 +6,94 @@
 
 ## Stage
 
-Pre-program / architecture design
+Pre-program / Curriculum Interview
 
 ## Primary Goal
 
 Build a self-directed, master's-level education focused on:
 
-- Software Engineering
-- Quality Engineering / QA
-- AI Engineering
+* Software Engineering
+* Quality Engineering / QA
+* AI Engineering
 
 with a strong connection to real-world and current engineering problems.
 
-## User Preferences
+## User Profile
 
-- Goal: become genuinely good at the subject.
-- Learning style: project-driven.
-- Initial intensity: light.
-- Credential: not currently required, but preserve the option of later formal study.
-- Academic material: use as much as practical.
-- References: real academic/authoritative references; no hallucinated citations.
-- Projects: realistic, current, and connected to real-world problems.
-- Capstone: should address a real and current-world issue.
+### Career Direction
 
-## Decisions Made
+The learner is currently a **Senior Software Engineer**.
 
-1. GitHub is the persistent source of truth.
-2. ChatGPT conversations are working sessions, not the permanent record.
-3. The program will use explicit PLAN / LEARN / BUILD / RESEARCH / CAPSTONE modes.
-4. The target is approximately university master's level.
-5. Learning should be assessed academically rather than by topic completion.
-6. Projects should connect theory with real engineering problems.
-7. Academic references should be a normal part of learning.
-8. The program must avoid becoming simply "ChatGPT teaches the user."
+Desired future direction:
 
-## Starting-Point Assessment
+* **70% Expert Software Engineer / IC track**
+* **30% Managerial / technical leadership capability**
 
-### Professional Experience
+The goal is not primarily to become a manager. The priority is developing
+strong technical depth while gaining enough leadership and management
+capability to operate effectively as a technical lead.
 
-The learner has substantial practical software-engineering experience:
+### Current Strengths
 
-* Requirements analysis — experienced
-* System/API design — experienced
-* Database design — experienced
-* Code review — experienced
-* Refactoring — experienced
-* CI/CD — some experience
-* Automated testing — experienced
-* Integration testing — experienced
-* Production troubleshooting — experienced, wants deeper capability
-* Observability — experienced
-* Technical/design decisions — experienced, wants deeper capability
-* Maintaining an existing codebase — 2–3 years of experience
+The learner has substantial practical experience in:
 
-Areas with limited professional experience:
+* Requirements analysis
+* System/API design
+* Database design
+* Code review
+* Refactoring
+* Automated testing
+* Integration testing
+* Observability
+* Production troubleshooting
+* Technical/design decisions
+* Maintaining existing codebases
 
+The learner is stronger on the frontend side but has experience working
+across the broader software-development lifecycle.
+
+### Development Areas
+
+The learner wants to improve:
+
+* Full-stack engineering fluency
+* Backend engineering
+* System-level engineering
 * Software architecture
-* Distributed systems
-* Performance testing
-* Security
+* Technical decision-making
+* Production troubleshooting
+* Engineering execution and time management
+* Technical leadership
 
 ### Quality Engineering
 
-Current profile: developer with substantial testing experience.
+Current profile:
 
-The program should develop this toward broader Quality Engineering, reliability,
-verification/validation, and eventually AI-system evaluation.
+> Developer with substantial testing experience.
+
+Current testing experience includes:
+
+* Jest
+* Vitest
+* Mocha
+* Sinon
+* Recent experimentation with Maestro
+
+The learner's team has limited QA personnel, creating a potential real-world
+opportunity to investigate QA automation and quality engineering.
 
 ### AI
 
-The learner uses LLMs extensively but currently has limited understanding of
-underlying machine learning theory.
+The learner uses LLMs extensively but currently has limited understanding
+of underlying machine-learning theory.
 
-AI learning should therefore eventually include the conceptual foundations
-rather than focusing primarily on prompt usage or application-level techniques.
+AI learning should eventually include foundational ML concepts rather than
+focusing primarily on prompt usage or application-level techniques.
 
 ### Academic / CS Foundations
 
-The learner has a Bachelor's degree in Informatics Engineering, completed more
-than a decade ago.
+The learner has a Bachelor's degree in Informatics Engineering, completed
+more than a decade ago.
 
 Current self-assessment:
 
@@ -97,97 +106,143 @@ Current self-assessment:
 * Probability/statistics — weak
 * Discrete mathematics — weak
 
-These should be treated as potentially rusty foundations, not automatically as
-zero knowledge. Future diagnostic exercises should distinguish forgotten
+These should be treated as potentially rusty foundations, not automatically
+as zero knowledge. Future diagnostic exercises should distinguish forgotten
 knowledge, practical knowledge without theoretical grounding, and genuine gaps.
 
-## Curriculum Strategy
+## Engineering Environment
 
-Use two interacting tracks:
+The learner's team primarily develops and maintains **mini apps inside a
+fintech super-app ecosystem**.
 
-### Engineering Track
+### Application Types
 
-Software Engineering
+Most applications are mini apps using a JavaScript-based DSL.
 
-→ Architecture & Systems
+Other applications may use:
 
-→ Quality & Reliability
+* React
+* Vue
+* Nuxt
+* SPA architecture
+* TypeScript
 
-→ AI Engineering
+Some mini apps have their own backend.
 
-→ Intelligent Software Systems
+### Current Technology Exposure
 
-→ Independent Research
+#### Frontend
 
+Primary:
 
-### Foundations Track
+* Mini-program DSL based on JavaScript
 
-Algorithms/data structures
+Additional:
 
-Databases
+* JavaScript
+* TypeScript
+* Vue
+* React
+* Nuxt
 
-Networking
+#### Backend
 
-Operating systems
+Primary:
 
-Concurrency
+* Go
 
-Distributed systems
+The learner is relatively new to the backend/Go side.
 
-Probability/statistics
+#### Database
 
-Discrete mathematics
+Primary:
 
+* PostgreSQL
 
-Foundations should be learned or refreshed **just in time** where possible,
-rather than forcing the learner through a complete undergraduate CS curriculum
-again.
+The learner is relatively new to PostgreSQL.
 
-## Diagnostic Phase
+#### Infrastructure
 
-Before beginning substantial coursework, conduct a practical diagnostic
-phase using realistic engineering problems rather than primarily recall-based
-questions.
+Cloud environment is believed to be Google Cloud.
 
-The diagnostic should assess:
+Infrastructure is primarily handled by infrastructure developers / SRE.
 
-* engineering reasoning;
-* system/design thinking;
-* architectural reasoning;
-* testing/quality reasoning;
-* debugging and production reasoning;
-* CS foundations;
-* ability to evaluate trade-offs;
-* ability to explain and defend decisions.
+#### CI/CD
 
-Do not treat professional experience as automatic evidence of master's-level
-theoretical understanding, and do not treat rusty academic knowledge as
-absence of practical competence.
+Exposure includes:
 
-## Career Direction
+* GitHub
+* Jenkins
 
-### Target Profile
+The learner has limited direct involvement with the main CI/CD systems.
 
-The learner is currently a Senior Software Engineer.
+#### Monitoring / Analytics
 
-The desired future direction is approximately:
+The team uses Mixpanel in some contexts.
 
-- 70% Expert Software Engineer / IC track
-- 30% Managerial / technical leadership capability
+## Typical Development Workflow
 
-The goal is not primarily to become a manager. The priority is developing
-strong technical depth while gaining enough leadership and management
-capability to operate effectively as a technical lead.
+A typical feature involves:
 
-### Development Areas
+1. BD / PM / PD provides or coordinates requirements.
+2. Developers estimate and design the implementation.
+3. Frontend and backend work may be split between developers.
+4. Developers perform happy-path testing.
+5. QA may be consulted where available.
+6. QA capacity is limited.
+7. Frontend deployment is often self-service through an established and stable system.
+8. Backend deployment is more dependent on infrastructure developers / SRE,
+   with the backend deployment system still emerging.
 
-Current areas the learner wants to improve:
+## Real-World Case Study: Escrow Mini App
 
-- Full-stack engineering fluency, coming from a stronger frontend background
-- System-level engineering capability
-- Technical decision-making and leadership
-- Production troubleshooting
-- Time management / engineering execution
+A recent example is a new mini app for an **escrow transaction**.
+
+### Team / Ownership
+
+* One PM requested an estimate for the complete feature/system.
+* A colleague provided a backend engineer so the learner could focus primarily
+  on frontend work.
+* No dedicated QA was provided for the project.
+
+### Quality Process
+
+Developers were responsible for testing the happy path.
+
+QA could be consulted when available, but QA capacity was limited.
+
+### Deployment
+
+Frontend:
+
+* Self-service deployment.
+* Existing deployment system is considered stable.
+
+Backend:
+
+* Infrastructure developers assist with deployment.
+* Backend deployment infrastructure is still emerging.
+
+### Engineering Significance
+
+This case provides a useful real-world example for future study of:
+
+* estimation;
+* requirements;
+* FE/BE ownership;
+* full-stack system understanding;
+* software quality;
+* testing strategy;
+* risk-based testing;
+* deployment;
+* infrastructure dependencies;
+* production reliability;
+* technical decision-making.
+
+Because escrow involves transactions, future analysis should pay particular
+attention to failure modes beyond the happy path.
+
+This case study is **not currently a committed project**.
 
 ## Potential Flagship Project
 
@@ -200,32 +255,218 @@ This is currently a **candidate direction, not a committed project**.
 
 The project should eventually be evaluated against:
 
-- real team/business value;
-- technical depth;
-- current relevance;
-- opportunities to apply Software Engineering and Quality Engineering;
-- opportunities to incorporate AI where genuinely useful;
-- measurable outcomes;
-- potential for later research.
+* real team/business value;
+* technical depth;
+* current relevance;
+* opportunities to apply Software Engineering and Quality Engineering;
+* opportunities to incorporate AI where genuinely useful;
+* measurable outcomes;
+* potential for later research.
 
 The project should not use AI merely because AI is fashionable.
+
+The project should begin with:
+
+> problem → evidence → requirements → design → implementation → measurement
+
+rather than choosing a technology first and looking for a problem afterward.
+
+## Curriculum Strategy
+
+Use two interacting tracks.
+
+### Engineering Track
+
+Software Engineering
+→ Architecture & Systems
+→ Quality & Reliability
+→ AI Engineering
+→ Intelligent Software Systems
+→ Independent Research
+
+### Foundations Track
+
+* Algorithms/data structures
+* Databases
+* Networking
+* Operating systems
+* Concurrency
+* Distributed systems
+* Probability/statistics
+* Discrete mathematics
+
+Foundations should be learned or refreshed **just in time** where possible,
+rather than forcing the learner through a complete undergraduate CS curriculum
+again.
+
+## Master's-Level Assessment Model
+
+The target is approximately the level expected from a strong university
+master's graduate.
+
+Assessment should focus on demonstrated capability rather than topic
+completion.
+
+Proposed progression:
+
+### Level 1 — Understand
+
+Can explain concepts accurately.
+
+### Level 2 — Apply
+
+Can apply concepts to well-defined engineering problems.
+
+### Level 3 — Analyze
+
+Can diagnose unfamiliar problems and reason about causes.
+
+### Level 4 — Evaluate
+
+Can compare competing approaches and evaluate evidence and trade-offs.
+
+### Level 5 — Synthesize
+
+Can integrate multiple concepts to solve complex/open-ended problems.
+
+### Level 6 — Investigate
+
+Can independently formulate and investigate a meaningful question using
+appropriate evidence and methodology.
+
+The eventual Master's target is primarily **Levels 5–6**, supported by strong
+Levels 3–4 across the relevant engineering competencies.
+
+No competency should be marked as mastered merely because it was discussed.
+
+## Diagnostic Phase
+
+Before beginning substantial coursework, conduct a practical diagnostic
+phase using realistic engineering problems rather than primarily
+recall-based questions.
+
+The diagnostic should assess:
+
+* engineering reasoning;
+* system/design thinking;
+* architectural reasoning;
+* testing/quality reasoning;
+* debugging and production reasoning;
+* CS foundations;
+* ability to evaluate trade-offs;
+* ability to explain and defend decisions.
+
+The diagnostic should distinguish:
+
+* already strong;
+* rusty and requiring refresh;
+* practical but theoretically weak;
+* important genuine gap;
+* low-priority gap that can be deferred.
+
+The learner does **not** need to pass the diagnostic before starting.
+The diagnostic exists to personalize the curriculum.
+
+## Academic Evidence Policy
+
+Use substantial real academic and authoritative material.
+
+For academic, scientific, technical, or current claims:
+
+* Prefer primary sources.
+* Prefer peer-reviewed research where appropriate.
+* Use established textbooks for foundational material.
+* Use standards and official documentation for technical standards/practices.
+* Use current sources for rapidly changing areas such as AI.
+* Verify citations.
+* Never invent papers, books, authors, results, quotations, or DOIs.
+* Clearly distinguish evidence, interpretation, uncertainty, and opinion.
+
+The program must not become simply:
+
+> "ChatGPT teaches the user."
+
+ChatGPT should function as an academic and engineering partner that helps
+with explanation, questioning, critique, literature navigation, project
+design, and research methodology.
+
+## Project Philosophy
+
+Projects should:
+
+* address realistic engineering problems;
+* preferably use current or emerging technology/problems;
+* create an artifact or measurable result;
+* require explicit engineering decisions;
+* expose limitations and trade-offs;
+* connect theory to practice;
+* become progressively more open-ended.
+
+The learner prefers serious projects connected to real-world problems.
+
+## Program Modes
+
+### PLAN
+
+Design and revise the program, curriculum, projects, assessment, and research direction.
+
+### LEARN
+
+Study concepts, literature, standards, books, papers, and examples.
+
+### BUILD
+
+Apply knowledge to a realistic engineering project.
+
+### RESEARCH
+
+Investigate an open or contested question using evidence and a defined method.
+
+### CAPSTONE
+
+Complete an independent master's-level project or thesis-like investigation.
+
+## Repository Operating Rule
+
+The GitHub repository is the persistent source of truth.
+
+ChatGPT conversations are working sessions.
+
+At the end of every meaningful session:
+
+1. Identify which repository files need updating.
+2. Provide the **complete contents** of each file that needs updating.
+3. Do not require the learner to manually locate a section and merge changes.
+4. Do not mark competencies as completed without evidence.
+5. Keep `CURRENT.md` synchronized with the latest program state.
+
+`CURRENT.md` is the primary session boot file.
 
 ## Next Planning Session
 
 Continue the curriculum interview by examining the learner's actual
-engineering environment, including:
+engineering environment in more detail, including:
 
-- technology stack;
-- programming languages;
-- frontend/backend experience;
-- databases;
-- APIs and integrations;
-- deployment/infrastructure;
-- CI/CD;
-- testing tools;
-- system scale and complexity;
-- team structure;
-- typical engineering problems.
+* detailed technology stack;
+* programming languages;
+* frontend/backend responsibilities;
+* databases;
+* APIs and integrations;
+* deployment/infrastructure;
+* CI/CD;
+* testing tools and practices;
+* system scale and complexity;
+* team structure;
+* typical engineering problems;
+* desired future technical capabilities.
 
-After the curriculum interview, design the diagnostic phase and then use
-the results to construct the personalized competency map and curriculum.
+After the curriculum interview:
+
+1. Design the detailed competency map.
+2. Design the diagnostic phase.
+3. Conduct the diagnostic.
+4. Use the results to construct the personalized curriculum.
+5. Begin coursework.
+
+Do not begin substantial coursework until the learner explicitly decides
+to start.
