@@ -2,19 +2,19 @@
 
 ## Overall Status
 
-**Planning complete — 0% coursework**
+**Diagnostic in progress — Part A completed**
 
 This percentage is intentionally not a measure of academic ability.
 
 It represents progress through the planned program.
 
-The program is now transitioning from high-level planning into diagnostic assessment.
+The program has moved beyond high-level planning and is now gathering evidence about the learner's current capabilities.
 
 ## Demonstrated Competencies
 
-None formally assessed yet.
+No competency has yet been formally marked as mastered.
 
-Professional experience described by the learner is recorded in `CURRENT.md`, but it is not automatically treated as master's-level demonstrated competency.
+The first diagnostic session provides evidence about current strengths and gaps, but this evidence is not yet sufficient to certify mastery.
 
 ## Completed Planning Work
 
@@ -37,35 +37,80 @@ Professional experience described by the learner is recorded in `CURRENT.md`, bu
 * [x] Closed initial high-level planning phase.
 * [x] Established diagnostic as the next major milestone.
 
+## Diagnostic Progress
+
+### Part A — System Design
+
+**Status: Completed**
+
+Scenario:
+
+Fintech escrow transaction mini-app involving:
+
+* transaction creation;
+* payment;
+* secured funds;
+* seller fulfillment;
+* buyer confirmation;
+* fund release.
+
+### Observed Strengths
+
+The learner demonstrated:
+
+* practical requirements instincts;
+* awareness of UI/UX and high-level flow;
+* awareness of acceptance criteria;
+* awareness of external APIs and funding source;
+* reasonable initial domain-flow modeling;
+* practical API decomposition;
+* awareness of idempotency as a solution to duplicate operations;
+* awareness that frontend state should be recoverable by querying backend state.
+
+### Observed Gaps / Development Areas
+
+The learner has not yet demonstrated strong reasoning about:
+
+* explicit assumptions and requirements validation;
+* formal domain/data modeling for financial transactions;
+* frontend/backend responsibility boundaries;
+* state-machine enforcement;
+* database transactions;
+* database constraints;
+* indexing;
+* concurrency;
+* distributed failure semantics;
+* retry safety;
+* source-of-truth ownership;
+* risk-based testing.
+
+The learner's response to backend failure — "retry several times, then notify the user" — is an important area for deeper study because retrying financial operations safely requires reasoning about idempotency, transaction boundaries, external systems, and committed state.
+
+### Initial Interpretation
+
+| Area                        | Initial interpretation                  |
+| --------------------------- | --------------------------------------- |
+| Requirements / product flow | Relatively strong practical instinct    |
+| Domain-flow reasoning       | Good initial capability                 |
+| API decomposition           | Good practical starting point           |
+| State-machine thinking      | Emerging                                |
+| FE/BE boundaries            | Gap                                     |
+| Failure-mode reasoning      | Emerging                                |
+| Idempotency                 | Good instinct; theory needs development |
+| Database reasoning          | Significant gap to investigate          |
+| Concurrency                 | Not yet demonstrated                    |
+| Distributed systems         | Not yet demonstrated                    |
+| Quality strategy            | Practical but currently unit-test-heavy |
+| Risk-based testing          | Not yet demonstrated                    |
+| Architecture evaluation     | Not yet assessed                        |
+
+These are provisional observations, not final grades.
+
 ## Formal Assessment
 
-No assessments completed.
+No competency has been formally certified.
 
-## Diagnostic
-
-**Status: Not started**
-
-Planned diagnostic areas:
-
-1. System design
-2. Quality engineering
-3. Production troubleshooting
-4. CS foundations
-5. AI engineering/evaluation
-6. Trade-off reasoning
-7. Technical explanation and defense
-
-The diagnostic should distinguish:
-
-* already strong;
-* rusty;
-* practical but theoretically weak;
-* important genuine gap;
-* low-priority gap.
-
-The learner does not need to "pass" the diagnostic.
-
-Its purpose is to personalize the curriculum.
+The diagnostic is still incomplete.
 
 ## Projects
 
@@ -81,16 +126,68 @@ This remains a candidate and is not yet committed.
 
 No research started.
 
+## Current Diagnostic Plan
+
+### Part B — Quality Engineering
+
+Assess:
+
+* risk;
+* test levels;
+* critical-path testing;
+* automation;
+* state transitions;
+* integration;
+* failure scenarios;
+* release confidence.
+
+### Part C — Production Troubleshooting
+
+Assess:
+
+* hypothesis formation;
+* observability;
+* debugging;
+* distributed/system reasoning;
+* evidence gathering;
+* root-cause analysis.
+
+### Part D — CS Foundations
+
+Assess selected practical areas:
+
+* data structures and algorithms;
+* SQL/database reasoning;
+* networking;
+* concurrency;
+* operating systems;
+* probability/statistics.
+
+### Part E — AI Engineering
+
+Assess:
+
+* AI-system evaluation;
+* defining useful outcomes;
+* experiment design;
+* failure modes;
+* measurement;
+* limitations;
+* engineering trade-offs.
+
 ## Current Next Steps
 
-1. Conduct the practical diagnostic.
-2. Analyze diagnostic evidence.
-3. Build the detailed competency map.
-4. Identify foundation refresh requirements.
-5. Identify advanced competencies already demonstrated.
-6. Construct the personalized curriculum.
-7. Select the first learning/build project.
-8. Begin substantial coursework.
+1. Complete Part B — Quality Engineering.
+2. Complete Part C — Production Troubleshooting.
+3. Complete Part D — CS Foundations.
+4. Complete Part E — AI Engineering.
+5. Analyze all diagnostic evidence.
+6. Build the detailed competency map.
+7. Identify foundation refresh requirements.
+8. Identify advanced competencies already demonstrated.
+9. Construct the personalized curriculum.
+10. Select the first learning/build project.
+11. Begin substantial coursework.
 
 ## Important Rule
 
