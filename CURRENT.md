@@ -6,7 +6,7 @@
 
 ## Stage
 
-Pre-diagnostic / Diagnostic Preparation
+Master's Diagnostic — In Progress
 
 ## Primary Goal
 
@@ -347,7 +347,7 @@ The target is approximately the level expected from a strong university master's
 
 Assessment should focus on demonstrated capability rather than topic completion.
 
-The program uses a progression inspired by competency-oriented curricular models such as CS2023, while extending it for the intended master's-level engineering and research goals. CS2023 defines four broad skill levels — Explain, Apply, Evaluate, and Develop — and explicitly frames curricula around demonstrated competencies rather than knowledge coverage alone.
+The program uses a progression inspired by competency-oriented curricular models such as CS2023, while extending it for the intended master's-level engineering and research goals.
 
 ### Level 1 — Understand
 
@@ -401,47 +401,267 @@ The diagnostic should distinguish:
 * important genuine gap;
 * low-priority gap that can be deferred.
 
-The learner does **not** need to pass the diagnostic before starting.
+The learner does not need to pass the diagnostic before starting.
 
 The diagnostic exists to personalize the curriculum.
 
-### Planned Diagnostic Structure
+### Diagnostic Structure
 
-The initial diagnostic should use a small number of realistic problems rather than a large exam.
+The initial diagnostic uses a small number of realistic problems rather than a large exam.
 
-#### Part A — System Design
+### Part A — System Design
 
-Design or reason about a fintech mini-app/backend/PostgreSQL system before implementation.
+**Status: Completed**
 
-Focus:
+The learner was asked to reason about a fintech escrow mini-app involving:
 
-* requirements;
-* boundaries;
-* data;
-* APIs;
-* failure modes;
-* architecture;
-* trade-offs.
+1. transaction creation;
+2. payment;
+3. funds being secured;
+4. seller shipment/fulfillment;
+5. buyer confirmation;
+6. fund release.
 
-#### Part B — Quality Engineering
+The learner was asked to consider requirements, entities/data, APIs, FE/BE boundaries, state transitions, failure scenarios, database responsibilities, and testing.
 
-Given a transaction-related feature with limited QA capacity, design a quality strategy.
+### Part A — Evidence
 
-Focus:
+#### Requirements
 
-* test strategy;
-* risk;
-* test levels;
-* automation;
-* coverage;
-* failure modes;
+The learner naturally identified:
+
+* UI/UX;
+* high-level flow;
+* acceptance criteria;
+* source of funds;
+* existing APIs.
+
+This demonstrates good practical product/requirements instincts.
+
+A notable gap is that the learner could not yet articulate which assumptions should explicitly be rejected or validated before implementation.
+
+#### Core Data / Domain Modeling
+
+The learner identified:
+
+* user;
+* item;
+* seller;
+* transaction-related status;
+* item metadata.
+
+The learner also described a coherent basic business flow:
+
+> seller creates transaction → seller shares payment link/QR → buyer pays → funds are secured → seller ships/fulfills → buyer confirms → funds released.
+
+This demonstrates useful domain-flow reasoning.
+
+However, the data model remained relatively shallow for a financial transaction system.
+
+Areas not yet demonstrated include:
+
+* explicit monetary representation;
+* transaction/payment records;
+* buyer/seller relationships;
+* immutable transaction history;
+* audit records;
+* payment-provider references;
+* settlement/release records;
+* failure/reversal states;
+* concurrency/version information;
+* database invariants.
+
+These should be investigated later.
+
+#### API / System Boundary
+
+The learner proposed APIs/operations including:
+
+* authentication;
+* image upload;
+* transaction creation;
+* transaction listing;
+* transaction detail;
+* payment;
+* payment-success notification;
+* cancellation;
+* shipment marking;
+* confirmation;
+* fund release.
+
+This demonstrates practical API decomposition instincts.
+
+However, the learner initially answered that **everything belongs to the backend**.
+
+This indicates a gap in explicitly reasoning about:
+
+* frontend responsibilities;
+* backend business invariants;
+* external payment systems;
+* asynchronous events/callbacks;
+* source-of-truth ownership;
+* trust boundaries.
+
+This should become a diagnostic focus.
+
+#### State Modeling
+
+The learner proposed:
+
+* Draft/created
+* Waiting for payment
+* Paid
+* Fund protected
+* Item shipped
+* Item confirmed
+* Fund released
+
+This is a useful initial state-machine instinct.
+
+However, the learner was not yet able to explain how to enforce valid transitions.
+
+This suggests a gap between:
+
+> identifying business states
+
+and:
+
+> implementing and enforcing state-machine invariants under concurrency and failure.
+
+This is an important learning target.
+
+#### Failure Reasoning
+
+The learner identified several important distributed-operation problems.
+
+For payment where the frontend does not receive the response:
+
+> query the backend again for status.
+
+This is a good practical recovery instinct.
+
+For duplicate payment and duplicate release:
+
+> use idempotency.
+
+This is a strong instinct and should be developed further.
+
+Idempotency keys are a standard mechanism for making retryable mutating operations safe against duplicate execution.
+
+For backend crashes:
+
+> retry several times and notify the user if retries fail.
+
+This is currently insufficient for financial operations.
+
+The important missing reasoning is:
+
+* What exactly was committed?
+* What operation is safe to retry?
+* How does the server recognize a duplicate request?
+* What if an external payment operation succeeded but the local transaction failed?
+* What if the database commit succeeded but the response was lost?
+* What if two requests execute concurrently?
+* Which component owns the authoritative state?
+
+These questions will connect directly to databases, transactions, concurrency, distributed systems, and reliability.
+
+#### Database Reasoning
+
+The learner explicitly identified uncertainty around:
+
+* PostgreSQL responsibilities;
+* database transactions;
+* constraints;
+* indexes.
+
+This is currently one of the clearest foundation gaps revealed by the diagnostic.
+
+It should not be interpreted as "the learner cannot design databases."
+
+Rather:
+
+> practical application/database experience exists, but formal database reasoning is currently insufficiently demonstrated.
+
+PostgreSQL's transaction isolation model provides the formal mechanisms needed to reason about concurrent operations and consistency, including serialization anomalies and retry behavior.
+
+#### Testing Reasoning
+
+The learner proposed mandatory unit tests, noting that AI makes unit-test creation easier.
+
+This demonstrates a strong quality mindset and practical awareness of automation.
+
+However, the answer currently overweights unit testing.
+
+For a financial transaction workflow, master's-level quality reasoning will eventually need to address:
+
+* risk-based test selection;
+* integration testing;
+* API testing;
+* database behavior;
+* state-transition testing;
+* concurrency;
+* idempotency;
+* external payment integration;
+* failure/recovery;
+* end-to-end critical paths;
+* observability;
 * release confidence.
 
-#### Part C — Production Troubleshooting
+The next quality-engineering diagnostic should therefore test whether the learner can move from:
 
-Analyze a scenario where a transaction appears successful to a user but the backend state is incorrect.
+> "we need unit tests"
 
-Focus:
+to:
+
+> "what risks must this system control, and what evidence gives us confidence that those risks are controlled?"
+
+### Initial Diagnostic Interpretation
+
+This is **not a final score**.
+
+It is an initial evidence record.
+
+| Area                            | Initial interpretation                                |
+| ------------------------------- | ----------------------------------------------------- |
+| Requirements / product flow     | Relatively strong practical instinct                  |
+| Domain-flow reasoning           | Good initial capability                               |
+| API decomposition               | Good practical starting point                         |
+| State-machine thinking          | Emerging                                              |
+| FE/BE responsibility boundaries | Gap                                                   |
+| Failure-mode awareness          | Emerging                                              |
+| Idempotency awareness           | Good instinct; theory needs development               |
+| Backend correctness             | Significant gap to investigate                        |
+| Database reasoning              | Significant gap to investigate                        |
+| Concurrency reasoning           | Not yet demonstrated                                  |
+| Distributed-systems reasoning   | Not yet demonstrated                                  |
+| Quality strategy                | Practical testing instinct; currently unit-test-heavy |
+| Risk-based testing              | Not yet demonstrated                                  |
+| Architecture evaluation         | Not yet sufficiently assessed                         |
+
+The diagnostic should continue before converting these observations into curriculum requirements.
+
+## Diagnostic Next Steps
+
+### Part B — Quality Engineering
+
+Next, assess the learner's ability to design a quality strategy for a transaction-related feature with limited QA capacity.
+
+Focus on:
+
+* risk;
+* test levels;
+* critical-path testing;
+* automation;
+* state transitions;
+* integration;
+* failure scenarios;
+* release confidence;
+* what should and should not be automated.
+
+### Part C — Production Troubleshooting
+
+Then assess:
 
 * hypothesis formation;
 * observability;
@@ -450,7 +670,7 @@ Focus:
 * evidence gathering;
 * root-cause analysis.
 
-#### Part D — CS Foundations
+### Part D — CS Foundations
 
 Use a small set of practical questions/problems covering selected areas such as:
 
@@ -463,13 +683,13 @@ Use a small set of practical questions/problems covering selected areas such as:
 
 The goal is not to test every undergraduate topic.
 
-#### Part E — AI Engineering
+### Part E — AI Engineering
 
 Evaluate a claim such as:
 
 > "An LLM-based QA tool can automatically generate useful regression tests for our applications."
 
-Focus:
+Focus on:
 
 * defining "useful";
 * evaluation criteria;
@@ -479,7 +699,7 @@ Focus:
 * model/system limitations;
 * engineering trade-offs.
 
-The exact diagnostic questions should be designed immediately before the diagnostic session.
+The exact diagnostic questions should be designed immediately before each diagnostic session.
 
 ## Academic Evidence Policy
 
@@ -586,19 +806,20 @@ At the end of every meaningful session:
 
 ## Next Step
 
-The next meaningful session should begin the **Master's Diagnostic**.
+The next meaningful session should continue the **Master's Diagnostic**, starting with **Part B — Quality Engineering**.
 
 The immediate sequence is:
 
-1. Conduct diagnostic.
-2. Analyze diagnostic evidence.
-3. Build the personalized competency map.
-4. Identify foundation refresh requirements.
-5. Identify advanced topics already sufficiently demonstrated.
-6. Construct the personalized curriculum.
-7. Select the first learning/build project.
-8. Begin substantial coursework.
+1. Complete Quality Engineering diagnostic.
+2. Complete Production Troubleshooting diagnostic.
+3. Complete selected CS Foundations diagnostic.
+4. Complete AI Engineering diagnostic.
+5. Analyze all diagnostic evidence.
+6. Build the personalized competency map.
+7. Identify foundation refresh requirements.
+8. Identify advanced topics already sufficiently demonstrated.
+9. Construct the personalized curriculum.
+10. Select the first learning/build project.
+11. Begin substantial coursework.
 
 Do not begin substantial coursework until the learner explicitly decides to start.
-
-The learner has indicated a desire to begin the actual program around this weekend, so the diagnostic should be the first substantive activity rather than extending the planning phase.
