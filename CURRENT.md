@@ -50,7 +50,7 @@ Desired future direction:
 
 The goal is not primarily to become a manager.
 
-The priority is developing strong technical depth while gaining enough leadership and management capability to operate effectively as a technical lead.
+The priority is developing strong technical depth while gaining enough leadership capability to operate effectively as a technical lead.
 
 ### Current Strengths
 
@@ -424,244 +424,128 @@ The learner was asked to reason about a fintech escrow mini-app involving:
 
 The learner was asked to consider requirements, entities/data, APIs, FE/BE boundaries, state transitions, failure scenarios, database responsibilities, and testing.
 
-### Part A — Evidence
+#### Evidence
 
-#### Requirements
+The learner demonstrated:
 
-The learner naturally identified:
+* practical requirements instincts;
+* awareness of UI/UX and high-level flow;
+* awareness of acceptance criteria;
+* awareness of external APIs and funding source;
+* reasonable initial domain-flow modeling;
+* practical API decomposition;
+* awareness of idempotency for duplicate operations;
+* awareness that frontend state can recover by querying backend state.
 
-* UI/UX;
-* high-level flow;
-* acceptance criteria;
-* source of funds;
-* existing APIs.
+The learner did not yet demonstrate strong reasoning about:
 
-This demonstrates good practical product/requirements instincts.
-
-A notable gap is that the learner could not yet articulate which assumptions should explicitly be rejected or validated before implementation.
-
-#### Core Data / Domain Modeling
-
-The learner identified:
-
-* user;
-* item;
-* seller;
-* transaction-related status;
-* item metadata.
-
-The learner also described a coherent basic business flow:
-
-> seller creates transaction → seller shares payment link/QR → buyer pays → funds are secured → seller ships/fulfills → buyer confirms → funds released.
-
-This demonstrates useful domain-flow reasoning.
-
-However, the data model remained relatively shallow for a financial transaction system.
-
-Areas not yet demonstrated include:
-
-* explicit monetary representation;
-* transaction/payment records;
-* buyer/seller relationships;
-* immutable transaction history;
-* audit records;
-* payment-provider references;
-* settlement/release records;
-* failure/reversal states;
-* concurrency/version information;
-* database invariants.
-
-These should be investigated later.
-
-#### API / System Boundary
-
-The learner proposed APIs/operations including:
-
-* authentication;
-* image upload;
-* transaction creation;
-* transaction listing;
-* transaction detail;
-* payment;
-* payment-success notification;
-* cancellation;
-* shipment marking;
-* confirmation;
-* fund release.
-
-This demonstrates practical API decomposition instincts.
-
-However, the learner initially answered that **everything belongs to the backend**.
-
-This indicates a gap in explicitly reasoning about:
-
-* frontend responsibilities;
-* backend business invariants;
-* external payment systems;
-* asynchronous events/callbacks;
-* source-of-truth ownership;
-* trust boundaries.
-
-This should become a diagnostic focus.
-
-#### State Modeling
-
-The learner proposed:
-
-* Draft/created
-* Waiting for payment
-* Paid
-* Fund protected
-* Item shipped
-* Item confirmed
-* Fund released
-
-This is a useful initial state-machine instinct.
-
-However, the learner was not yet able to explain how to enforce valid transitions.
-
-This suggests a gap between:
-
-> identifying business states
-
-and:
-
-> implementing and enforcing state-machine invariants under concurrency and failure.
-
-This is an important learning target.
-
-#### Failure Reasoning
-
-The learner identified several important distributed-operation problems.
-
-For payment where the frontend does not receive the response:
-
-> query the backend again for status.
-
-This is a good practical recovery instinct.
-
-For duplicate payment and duplicate release:
-
-> use idempotency.
-
-This is a strong instinct and should be developed further.
-
-Idempotency keys are a standard mechanism for making retryable mutating operations safe against duplicate execution.
-
-For backend crashes:
-
-> retry several times and notify the user if retries fail.
-
-This is currently insufficient for financial operations.
-
-The important missing reasoning is:
-
-* What exactly was committed?
-* What operation is safe to retry?
-* How does the server recognize a duplicate request?
-* What if an external payment operation succeeded but the local transaction failed?
-* What if the database commit succeeded but the response was lost?
-* What if two requests execute concurrently?
-* Which component owns the authoritative state?
-
-These questions will connect directly to databases, transactions, concurrency, distributed systems, and reliability.
-
-#### Database Reasoning
-
-The learner explicitly identified uncertainty around:
-
-* PostgreSQL responsibilities;
+* explicit assumptions and requirements validation;
+* formal domain/data modeling for financial transactions;
+* frontend/backend responsibility boundaries;
+* state-machine enforcement;
 * database transactions;
-* constraints;
-* indexes.
-
-This is currently one of the clearest foundation gaps revealed by the diagnostic.
-
-It should not be interpreted as "the learner cannot design databases."
-
-Rather:
-
-> practical application/database experience exists, but formal database reasoning is currently insufficiently demonstrated.
-
-PostgreSQL's transaction isolation model provides the formal mechanisms needed to reason about concurrent operations and consistency, including serialization anomalies and retry behavior.
-
-#### Testing Reasoning
-
-The learner proposed mandatory unit tests, noting that AI makes unit-test creation easier.
-
-This demonstrates a strong quality mindset and practical awareness of automation.
-
-However, the answer currently overweights unit testing.
-
-For a financial transaction workflow, master's-level quality reasoning will eventually need to address:
-
-* risk-based test selection;
-* integration testing;
-* API testing;
-* database behavior;
-* state-transition testing;
+* database constraints;
+* indexing;
 * concurrency;
-* idempotency;
-* external payment integration;
-* failure/recovery;
-* end-to-end critical paths;
-* observability;
-* release confidence.
-
-The next quality-engineering diagnostic should therefore test whether the learner can move from:
-
-> "we need unit tests"
-
-to:
-
-> "what risks must this system control, and what evidence gives us confidence that those risks are controlled?"
-
-### Initial Diagnostic Interpretation
-
-This is **not a final score**.
-
-It is an initial evidence record.
-
-| Area                            | Initial interpretation                                |
-| ------------------------------- | ----------------------------------------------------- |
-| Requirements / product flow     | Relatively strong practical instinct                  |
-| Domain-flow reasoning           | Good initial capability                               |
-| API decomposition               | Good practical starting point                         |
-| State-machine thinking          | Emerging                                              |
-| FE/BE responsibility boundaries | Gap                                                   |
-| Failure-mode awareness          | Emerging                                              |
-| Idempotency awareness           | Good instinct; theory needs development               |
-| Backend correctness             | Significant gap to investigate                        |
-| Database reasoning              | Significant gap to investigate                        |
-| Concurrency reasoning           | Not yet demonstrated                                  |
-| Distributed-systems reasoning   | Not yet demonstrated                                  |
-| Quality strategy                | Practical testing instinct; currently unit-test-heavy |
-| Risk-based testing              | Not yet demonstrated                                  |
-| Architecture evaluation         | Not yet sufficiently assessed                         |
-
-The diagnostic should continue before converting these observations into curriculum requirements.
-
-## Diagnostic Next Steps
+* distributed failure semantics;
+* retry safety;
+* source-of-truth ownership;
+* risk-based testing.
 
 ### Part B — Quality Engineering
 
-Next, assess the learner's ability to design a quality strategy for a transaction-related feature with limited QA capacity.
+**Status: Completed**
 
-Focus on:
+The learner was asked to identify major risks, prioritize testing, select test types, propose edge cases, and evaluate whether high unit-test coverage is sufficient to release the escrow system.
 
-* risk;
-* test levels;
-* critical-path testing;
-* automation;
-* state transitions;
-* integration;
-* failure scenarios;
-* release confidence;
-* what should and should not be automated.
+#### Evidence
+
+The learner identified a significant real-world fintech/regulatory risk:
+
+> seller balance is already at a regulatory limit and therefore cannot receive the disbursed funds — where does the money go?
+
+This demonstrates good awareness of domain-specific failure and business risk.
+
+The learner prioritized testing:
+
+* payment success;
+* disbursement success.
+
+The learner proposed a progression of:
+
+> unit → integration → API → E2E → manual
+
+and referenced the testing pyramid/trophy concept.
+
+The learner identified several useful edge cases:
+
+* same transaction paid twice;
+* same item created as a transaction twice;
+* payment failure;
+* payment that cannot be audited.
+
+The learner also stated that QA should remain a quality gate.
+
+#### Initial Interpretation
+
+The learner demonstrates:
+
+* strong practical/domain-risk instincts;
+* familiarity with common testing levels;
+* familiarity with automated testing;
+* awareness of duplicate-operation risks;
+* awareness of auditability.
+
+However, the learner's quality reasoning is currently more **test-layer and happy-path oriented than explicitly risk-based**.
+
+The learner appears to need deeper development in:
+
+* risk-based test strategy;
+* test adequacy;
+* failure/recovery testing;
+* state-transition testing;
+* integration/system-level confidence;
+* concurrency testing;
+* financial consistency testing;
+* understanding the limitations of code coverage;
+* distinguishing QA responsibility from overall engineering quality ownership.
+
+The learner's response to the statement:
+
+> "We have 90% unit-test coverage, so the feature is safe to release."
+
+was uncertainty, while still expressing that QA should be a quality gate.
+
+This is a useful signal for later study: high unit-test coverage alone does not establish that system-level risks are controlled.
+
+### Current Diagnostic Interpretation
+
+| Area                                | Initial interpretation                                 |
+| ----------------------------------- | ------------------------------------------------------ |
+| Requirements / product flow         | Relatively strong practical instinct                   |
+| Domain-flow reasoning               | Good initial capability                                |
+| API decomposition                   | Good practical starting point                          |
+| Business/regulatory risk awareness  | Strong practical instinct                              |
+| State-machine thinking              | Emerging                                               |
+| FE/BE boundaries                    | Gap                                                    |
+| Failure-mode reasoning              | Emerging                                               |
+| Idempotency                         | Good instinct; theory needs development                |
+| Database reasoning                  | Significant gap to investigate                         |
+| Concurrency                         | Not yet demonstrated                                   |
+| Distributed systems                 | Not yet demonstrated                                   |
+| Quality strategy                    | Practical but currently test-layer/happy-path oriented |
+| Risk-based testing                  | Needs development                                      |
+| Test adequacy / coverage reasoning  | Needs development                                      |
+| QA vs engineering quality ownership | Needs development                                      |
+| Architecture evaluation             | Not yet assessed                                       |
+
+These are provisional observations, not final grades.
+
+## Diagnostic Next Steps
 
 ### Part C — Production Troubleshooting
 
-Then assess:
+Assess:
 
 * hypothesis formation;
 * observability;
@@ -806,20 +690,19 @@ At the end of every meaningful session:
 
 ## Next Step
 
-The next meaningful session should continue the **Master's Diagnostic**, starting with **Part B — Quality Engineering**.
+The next meaningful session should continue the **Master's Diagnostic**, starting with **Part C — Production Troubleshooting**.
 
 The immediate sequence is:
 
-1. Complete Quality Engineering diagnostic.
-2. Complete Production Troubleshooting diagnostic.
-3. Complete selected CS Foundations diagnostic.
-4. Complete AI Engineering diagnostic.
-5. Analyze all diagnostic evidence.
-6. Build the personalized competency map.
-7. Identify foundation refresh requirements.
-8. Identify advanced topics already sufficiently demonstrated.
-9. Construct the personalized curriculum.
-10. Select the first learning/build project.
-11. Begin substantial coursework.
+1. Complete Production Troubleshooting diagnostic.
+2. Complete selected CS Foundations diagnostic.
+3. Complete AI Engineering diagnostic.
+4. Analyze all diagnostic evidence.
+5. Build the personalized competency map.
+6. Identify foundation refresh requirements.
+7. Identify advanced topics already sufficiently demonstrated.
+8. Construct the personalized curriculum.
+9. Select the first learning/build project.
+10. Begin substantial coursework.
 
 Do not begin substantial coursework until the learner explicitly decides to start.
