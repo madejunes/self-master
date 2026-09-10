@@ -2,7 +2,7 @@
 
 ## Overall Status
 
-**Diagnostic in progress — Part A completed**
+**Diagnostic in progress — Parts A and B completed**
 
 This percentage is intentionally not a measure of academic ability.
 
@@ -14,7 +14,7 @@ The program has moved beyond high-level planning and is now gathering evidence a
 
 No competency has yet been formally marked as mastered.
 
-The first diagnostic session provides evidence about current strengths and gaps, but this evidence is not yet sufficient to certify mastery.
+The diagnostic provides evidence about current strengths and gaps, but the evidence collected so far is not sufficient to certify master's-level mastery.
 
 ## Completed Planning Work
 
@@ -54,63 +54,109 @@ Fintech escrow transaction mini-app involving:
 * buyer confirmation;
 * fund release.
 
-### Observed Strengths
+#### Observed Strengths
 
-The learner demonstrated:
+* Practical requirements instincts
+* Domain-flow modeling
+* API decomposition
+* Awareness of idempotency
+* Awareness of recovering frontend state from backend state
 
-* practical requirements instincts;
-* awareness of UI/UX and high-level flow;
-* awareness of acceptance criteria;
-* awareness of external APIs and funding source;
-* reasonable initial domain-flow modeling;
-* practical API decomposition;
-* awareness of idempotency as a solution to duplicate operations;
-* awareness that frontend state should be recoverable by querying backend state.
+#### Observed Gaps
 
-### Observed Gaps / Development Areas
+* Explicit assumption validation
+* Financial domain/data modeling
+* FE/BE responsibility boundaries
+* State-machine enforcement
+* Database transactions and constraints
+* Indexing
+* Concurrency
+* Distributed failure semantics
+* Retry safety
+* Source-of-truth reasoning
+* Risk-based testing
 
-The learner has not yet demonstrated strong reasoning about:
+### Part B — Quality Engineering
 
-* explicit assumptions and requirements validation;
-* formal domain/data modeling for financial transactions;
-* frontend/backend responsibility boundaries;
-* state-machine enforcement;
-* database transactions;
-* database constraints;
-* indexing;
-* concurrency;
-* distributed failure semantics;
-* retry safety;
-* source-of-truth ownership;
-* risk-based testing.
+**Status: Completed**
 
-The learner's response to backend failure — "retry several times, then notify the user" — is an important area for deeper study because retrying financial operations safely requires reasoning about idempotency, transaction boundaries, external systems, and committed state.
+The learner was asked to reason about quality strategy for the same escrow system with limited QA capacity.
 
-### Initial Interpretation
+#### Observed Strengths
 
-| Area                        | Initial interpretation                  |
-| --------------------------- | --------------------------------------- |
-| Requirements / product flow | Relatively strong practical instinct    |
-| Domain-flow reasoning       | Good initial capability                 |
-| API decomposition           | Good practical starting point           |
-| State-machine thinking      | Emerging                                |
-| FE/BE boundaries            | Gap                                     |
-| Failure-mode reasoning      | Emerging                                |
-| Idempotency                 | Good instinct; theory needs development |
-| Database reasoning          | Significant gap to investigate          |
-| Concurrency                 | Not yet demonstrated                    |
-| Distributed systems         | Not yet demonstrated                    |
-| Quality strategy            | Practical but currently unit-test-heavy |
-| Risk-based testing          | Not yet demonstrated                    |
-| Architecture evaluation     | Not yet assessed                        |
+* Strong practical/domain-risk awareness
+* Awareness of regulatory/business failure
+* Familiarity with unit/integration/API/E2E/manual testing
+* Awareness of duplicate-operation risks
+* Awareness of auditability
+* Existing testing automation mindset
 
-These are provisional observations, not final grades.
+A particularly useful observation was the learner's immediate concern that a seller might already be at a regulatory balance limit and therefore be unable to receive disbursed funds.
+
+#### Observed Gaps
+
+* Risk-based test prioritization
+* Systematic test strategy
+* Failure/recovery testing
+* State-transition testing
+* Concurrency testing
+* Financial consistency testing
+* Test adequacy reasoning
+* Understanding limits of code coverage
+* Distinguishing QA as a role from quality as an engineering responsibility
+
+The learner initially prioritized:
+
+* payment success;
+* disbursement success.
+
+The learner proposed:
+
+> unit → integration → API → E2E → manual
+
+This shows familiarity with testing layers but suggests that test selection is currently more strongly driven by test type/order than by explicit risk analysis.
+
+The learner identified:
+
+* duplicate payment;
+* duplicate transaction creation;
+* payment failure;
+* auditability failure
+
+as edge cases.
+
+The learner was uncertain about whether 90% unit-test coverage would be enough to release and still viewed QA as a quality gate.
+
+This is useful evidence for developing stronger risk-based quality reasoning.
+
+## Initial Diagnostic Interpretation
+
+| Area                                | Initial interpretation                                 |
+| ----------------------------------- | ------------------------------------------------------ |
+| Requirements / product flow         | Relatively strong practical instinct                   |
+| Domain-flow reasoning               | Good initial capability                                |
+| API decomposition                   | Good practical starting point                          |
+| Business/regulatory risk awareness  | Strong practical instinct                              |
+| State-machine thinking              | Emerging                                               |
+| FE/BE boundaries                    | Gap                                                    |
+| Failure-mode reasoning              | Emerging                                               |
+| Idempotency                         | Good instinct; theory needs development                |
+| Database reasoning                  | Significant gap to investigate                         |
+| Concurrency                         | Not yet demonstrated                                   |
+| Distributed systems                 | Not yet demonstrated                                   |
+| Quality strategy                    | Practical but currently test-layer/happy-path oriented |
+| Risk-based testing                  | Needs development                                      |
+| Test adequacy / coverage reasoning  | Needs development                                      |
+| QA vs engineering quality ownership | Needs development                                      |
+| Architecture evaluation             | Not yet assessed                                       |
+
+These observations are provisional and should not yet be converted into final competency grades.
 
 ## Formal Assessment
 
 No competency has been formally certified.
 
-The diagnostic is still incomplete.
+The diagnostic is incomplete.
 
 ## Projects
 
@@ -127,19 +173,6 @@ This remains a candidate and is not yet committed.
 No research started.
 
 ## Current Diagnostic Plan
-
-### Part B — Quality Engineering
-
-Assess:
-
-* risk;
-* test levels;
-* critical-path testing;
-* automation;
-* state transitions;
-* integration;
-* failure scenarios;
-* release confidence.
 
 ### Part C — Production Troubleshooting
 
@@ -177,17 +210,16 @@ Assess:
 
 ## Current Next Steps
 
-1. Complete Part B — Quality Engineering.
-2. Complete Part C — Production Troubleshooting.
-3. Complete Part D — CS Foundations.
-4. Complete Part E — AI Engineering.
-5. Analyze all diagnostic evidence.
-6. Build the detailed competency map.
-7. Identify foundation refresh requirements.
-8. Identify advanced competencies already demonstrated.
-9. Construct the personalized curriculum.
-10. Select the first learning/build project.
-11. Begin substantial coursework.
+1. Complete Part C — Production Troubleshooting.
+2. Complete selected CS Foundations diagnostic.
+3. Complete Part E — AI Engineering.
+4. Analyze all diagnostic evidence.
+5. Build the detailed competency map.
+6. Identify foundation refresh requirements.
+7. Identify advanced competencies already demonstrated.
+8. Construct the personalized curriculum.
+9. Select the first learning/build project.
+10. Begin substantial coursework.
 
 ## Important Rule
 
