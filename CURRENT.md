@@ -518,41 +518,140 @@ was uncertainty, while still expressing that QA should be a quality gate.
 
 This is a useful signal for later study: high unit-test coverage alone does not establish that system-level risks are controlled.
 
+### Part C — Production Troubleshooting
+
+**Status: Completed**
+
+Scenario:
+
+A buyer paid Rp1,000,000.
+
+* The payment provider reports `SUCCESS`.
+* The buyer sees "Payment successful".
+* The seller's transaction still shows `WAITING_FOR_PAYMENT`.
+
+The learner was asked how they would investigate the incident, generate hypotheses, distinguish causes, recover the customer situation, and prevent recurrence.
+
+#### Evidence
+
+The learner immediately proposed using:
+
+* frontend user-action logs;
+* correlated API calls;
+* trace IDs;
+* logs related to the buyer and seller.
+
+This demonstrates good conceptual awareness of distributed request tracing and evidence-based investigation.
+
+The learner proposed several plausible hypotheses:
+
+* payment callback silently failed or was unhandled;
+* payment callback timed out;
+* transaction-status cache was not invalidated.
+
+The learner stated that the available logs should help distinguish between these possibilities.
+
+The learner also explicitly acknowledged that their current experience with end-to-end log investigation is limited and is primarily frontend-based.
+
+This is important diagnostic evidence rather than a weakness to hide.
+
+#### Recovery Reasoning
+
+The learner initially proposed:
+
+> refund the buyer money first.
+
+This exposed an important gap in safe financial-incident recovery reasoning.
+
+The correct next step cannot automatically be an irreversible financial operation before determining the actual system state.
+
+For example, the following states are materially different:
+
+```text
+Payment provider: SUCCESS
+Internal payment record: SUCCESS
+Escrow record: WAITING_FOR_PAYMENT
+```
+
+versus:
+
+```text
+Payment provider: SUCCESS
+Internal payment record: missing
+Escrow record: WAITING_FOR_PAYMENT
+```
+
+versus:
+
+```text
+Payment provider: SUCCESS
+Internal payment record: SUCCESS
+Escrow record: SUCCESS
+```
+
+The appropriate recovery action depends on evidence.
+
+The learner then recognized that both the payment provider and internal database can be authoritative for different aspects of the system, and that disagreement requires reconciliation rather than blindly trusting one side.
+
+#### Initial Interpretation
+
+The learner demonstrates:
+
+* good instinct for traceability;
+* awareness of correlated logs;
+* reasonable initial hypothesis generation;
+* awareness of frontend observability;
+* willingness to investigate rather than immediately modify state.
+
+The learner currently has limited demonstrated experience with:
+
+* backend incident investigation;
+* end-to-end distributed tracing;
+* backend/database evidence correlation;
+* financial reconciliation;
+* system invariants;
+* safe recovery of inconsistent financial state;
+* distributed failure analysis;
+* incident response beyond the frontend.
+
+This reinforces earlier diagnostic signals around:
+
+* distributed systems;
+* backend engineering;
+* database correctness;
+* observability;
+* reliability;
+* concurrency;
+* state consistency.
+
 ### Current Diagnostic Interpretation
 
-| Area                                | Initial interpretation                                 |
-| ----------------------------------- | ------------------------------------------------------ |
-| Requirements / product flow         | Relatively strong practical instinct                   |
-| Domain-flow reasoning               | Good initial capability                                |
-| API decomposition                   | Good practical starting point                          |
-| Business/regulatory risk awareness  | Strong practical instinct                              |
-| State-machine thinking              | Emerging                                               |
-| FE/BE boundaries                    | Gap                                                    |
-| Failure-mode reasoning              | Emerging                                               |
-| Idempotency                         | Good instinct; theory needs development                |
-| Database reasoning                  | Significant gap to investigate                         |
-| Concurrency                         | Not yet demonstrated                                   |
-| Distributed systems                 | Not yet demonstrated                                   |
-| Quality strategy                    | Practical but currently test-layer/happy-path oriented |
-| Risk-based testing                  | Needs development                                      |
-| Test adequacy / coverage reasoning  | Needs development                                      |
-| QA vs engineering quality ownership | Needs development                                      |
-| Architecture evaluation             | Not yet assessed                                       |
+| Area                                   | Initial interpretation                                       |
+| -------------------------------------- | ------------------------------------------------------------ |
+| Requirements / product flow            | Relatively strong practical instinct                         |
+| Domain-flow reasoning                  | Good initial capability                                      |
+| API decomposition                      | Good practical starting point                                |
+| Business/regulatory risk awareness     | Strong practical instinct                                    |
+| State-machine thinking                 | Emerging                                                     |
+| FE/BE boundaries                       | Gap                                                          |
+| Failure-mode reasoning                 | Emerging                                                     |
+| Idempotency                            | Good instinct; theory needs development                      |
+| Database reasoning                     | Significant gap to investigate                               |
+| Concurrency                            | Not yet demonstrated                                         |
+| Distributed systems                    | Significant gap to investigate                               |
+| Quality strategy                       | Practical but currently test-layer/happy-path oriented       |
+| Risk-based testing                     | Needs development                                            |
+| Test adequacy / coverage reasoning     | Needs development                                            |
+| QA vs engineering quality ownership    | Needs development                                            |
+| Production troubleshooting             | Frontend-oriented; backend/distributed experience limited    |
+| Observability / tracing                | Good conceptual instinct; operational depth not demonstrated |
+| Incident investigation                 | Emerging                                                     |
+| Reconciliation / consistency reasoning | Significant gap to investigate                               |
+| Architecture evaluation                | Not yet assessed                                             |
 
 These are provisional observations, not final grades.
 
 ## Diagnostic Next Steps
-
-### Part C — Production Troubleshooting
-
-Assess:
-
-* hypothesis formation;
-* observability;
-* debugging;
-* distributed/system reasoning;
-* evidence gathering;
-* root-cause analysis.
 
 ### Part D — CS Foundations
 
@@ -632,7 +731,7 @@ The learner prefers serious projects connected to real-world problems.
 
 ## Professional / Leadership Development
 
-The program should incorporate the learner's desired approximately **30% managerial / technical leadership capability** without turning the curriculum into a management degree.
+The program should incorporate the learner's desired approximately 30% managerial / technical leadership capability without turning the curriculum into a management degree.
 
 Relevant competencies should be embedded into engineering work:
 
@@ -690,19 +789,18 @@ At the end of every meaningful session:
 
 ## Next Step
 
-The next meaningful session should continue the **Master's Diagnostic**, starting with **Part C — Production Troubleshooting**.
+The next meaningful session should continue the **Master's Diagnostic**, starting with **Part D — CS Foundations**.
 
 The immediate sequence is:
 
-1. Complete Production Troubleshooting diagnostic.
-2. Complete selected CS Foundations diagnostic.
-3. Complete AI Engineering diagnostic.
-4. Analyze all diagnostic evidence.
-5. Build the personalized competency map.
-6. Identify foundation refresh requirements.
-7. Identify advanced topics already sufficiently demonstrated.
-8. Construct the personalized curriculum.
-9. Select the first learning/build project.
-10. Begin substantial coursework.
+1. Complete selected CS Foundations diagnostic.
+2. Complete AI Engineering diagnostic.
+3. Analyze all diagnostic evidence.
+4. Build the personalized competency map.
+5. Identify foundation refresh requirements.
+6. Identify advanced topics already sufficiently demonstrated.
+7. Construct the personalized curriculum.
+8. Select the first learning/build project.
+9. Begin substantial coursework.
 
 Do not begin substantial coursework until the learner explicitly decides to start.
