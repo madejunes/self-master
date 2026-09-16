@@ -2,7 +2,7 @@
 
 ## Overall Status
 
-**Diagnostic in progress — Parts A and B completed**
+**Diagnostic in progress — Parts A, B, and C completed**
 
 This percentage is intentionally not a measure of academic ability.
 
@@ -129,26 +129,82 @@ The learner was uncertain about whether 90% unit-test coverage would be enough t
 
 This is useful evidence for developing stronger risk-based quality reasoning.
 
-## Initial Diagnostic Interpretation
+### Part C — Production Troubleshooting
 
-| Area                                | Initial interpretation                                 |
-| ----------------------------------- | ------------------------------------------------------ |
-| Requirements / product flow         | Relatively strong practical instinct                   |
-| Domain-flow reasoning               | Good initial capability                                |
-| API decomposition                   | Good practical starting point                          |
-| Business/regulatory risk awareness  | Strong practical instinct                              |
-| State-machine thinking              | Emerging                                               |
-| FE/BE boundaries                    | Gap                                                    |
-| Failure-mode reasoning              | Emerging                                               |
-| Idempotency                         | Good instinct; theory needs development                |
-| Database reasoning                  | Significant gap to investigate                         |
-| Concurrency                         | Not yet demonstrated                                   |
-| Distributed systems                 | Not yet demonstrated                                   |
-| Quality strategy                    | Practical but currently test-layer/happy-path oriented |
-| Risk-based testing                  | Needs development                                      |
-| Test adequacy / coverage reasoning  | Needs development                                      |
-| QA vs engineering quality ownership | Needs development                                      |
-| Architecture evaluation             | Not yet assessed                                       |
+**Status: Completed**
+
+Scenario:
+
+A buyer paid Rp1,000,000.
+
+* The payment provider reports `SUCCESS`.
+* The buyer sees "Payment successful".
+* The seller's transaction still shows `WAITING_FOR_PAYMENT`.
+
+The learner was asked how they would investigate the incident, generate hypotheses, distinguish causes, recover the customer situation, and prevent recurrence.
+
+#### Observed Strengths
+
+* Good instinct for trace IDs and correlated logs
+* Awareness that user actions and API calls should be traceable
+* Reasonable initial hypothesis generation
+* Awareness of callback failure/timeout possibilities
+* Awareness of cache invalidation as a possible cause
+* Willingness to acknowledge operational experience limitations
+
+The learner's own assessment was that their end-to-end log investigation experience is limited and is currently more frontend-focused.
+
+#### Observed Gaps
+
+The learner initially proposed refunding the buyer before establishing the actual system state.
+
+This exposed a gap in safe financial recovery reasoning.
+
+A financial incident should first establish the relationship between:
+
+* payment-provider state;
+* internal payment state;
+* escrow state;
+* database state;
+* relevant events/callbacks.
+
+The learner subsequently recognized that both the external payment provider and internal database can be authoritative for different aspects of the system, and that disagreement requires reconciliation.
+
+Important areas for development:
+
+* backend incident investigation;
+* distributed tracing in practice;
+* backend/database evidence correlation;
+* system invariants;
+* reconciliation;
+* safe recovery;
+* distributed failure analysis;
+* incident response.
+
+### Initial Diagnostic Interpretation
+
+| Area                                   | Initial interpretation                                       |
+| -------------------------------------- | ------------------------------------------------------------ |
+| Requirements / product flow            | Relatively strong practical instinct                         |
+| Domain-flow reasoning                  | Good initial capability                                      |
+| API decomposition                      | Good practical starting point                                |
+| Business/regulatory risk awareness     | Strong practical instinct                                    |
+| State-machine thinking                 | Emerging                                                     |
+| FE/BE boundaries                       | Gap                                                          |
+| Failure-mode reasoning                 | Emerging                                                     |
+| Idempotency                            | Good instinct; theory needs development                      |
+| Database reasoning                     | Significant gap to investigate                               |
+| Concurrency                            | Not yet demonstrated                                         |
+| Distributed systems                    | Significant gap to investigate                               |
+| Quality strategy                       | Practical but currently test-layer/happy-path oriented       |
+| Risk-based testing                     | Needs development                                            |
+| Test adequacy / coverage reasoning     | Needs development                                            |
+| QA vs engineering quality ownership    | Needs development                                            |
+| Production troubleshooting             | Frontend-oriented; backend/distributed experience limited    |
+| Observability / tracing                | Good conceptual instinct; operational depth not demonstrated |
+| Incident investigation                 | Emerging                                                     |
+| Reconciliation / consistency reasoning | Significant gap to investigate                               |
+| Architecture evaluation                | Not yet assessed                                             |
 
 These observations are provisional and should not yet be converted into final competency grades.
 
@@ -174,17 +230,6 @@ No research started.
 
 ## Current Diagnostic Plan
 
-### Part C — Production Troubleshooting
-
-Assess:
-
-* hypothesis formation;
-* observability;
-* debugging;
-* distributed/system reasoning;
-* evidence gathering;
-* root-cause analysis.
-
 ### Part D — CS Foundations
 
 Assess selected practical areas:
@@ -195,6 +240,8 @@ Assess selected practical areas:
 * concurrency;
 * operating systems;
 * probability/statistics.
+
+The goal is not to test every undergraduate topic.
 
 ### Part E — AI Engineering
 
@@ -210,16 +257,15 @@ Assess:
 
 ## Current Next Steps
 
-1. Complete Part C — Production Troubleshooting.
-2. Complete selected CS Foundations diagnostic.
-3. Complete Part E — AI Engineering.
-4. Analyze all diagnostic evidence.
-5. Build the detailed competency map.
-6. Identify foundation refresh requirements.
-7. Identify advanced competencies already demonstrated.
-8. Construct the personalized curriculum.
-9. Select the first learning/build project.
-10. Begin substantial coursework.
+1. Complete Part D — CS Foundations.
+2. Complete Part E — AI Engineering.
+3. Analyze all diagnostic evidence.
+4. Build the detailed competency map.
+5. Identify foundation refresh requirements.
+6. Identify advanced competencies already demonstrated.
+7. Construct the personalized curriculum.
+8. Select the first learning/build project.
+9. Begin substantial coursework.
 
 ## Important Rule
 
