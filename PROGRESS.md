@@ -2,25 +2,23 @@
 
 ## Overall Status
 
-**Diagnostic in progress — Parts A, B, and C completed**
+**Planning / Diagnostic phase — coursework not started**
 
-This percentage is intentionally not a measure of academic ability.
-
-It represents progress through the planned program.
-
-The program has moved beyond high-level planning and is now gathering evidence about the learner's current capabilities.
+This status represents progress through the planned program, not academic
+ability or competence.
 
 ## Demonstrated Competencies
 
-No competency has yet been formally marked as mastered.
+No competencies are formally marked as mastered.
 
-The diagnostic provides evidence about current strengths and gaps, but the evidence collected so far is not sufficient to certify master's-level mastery.
+The diagnostic has produced evidence about strengths and gaps, but diagnostic
+evidence is not equivalent to mastery.
 
 ## Completed Planning Work
 
 * [x] Identified goal: master's-level competence without university enrollment.
 * [x] Identified primary field: Software Engineering.
-* [x] Identified major adjacent fields: Quality Engineering / QA and AI Engineering.
+* [x] Identified major adjacent fields: QA / Quality Engineering and AI.
 * [x] Chosen project-driven learning.
 * [x] Chosen light initial intensity.
 * [x] Decided to use real academic/authoritative references.
@@ -28,263 +26,211 @@ The diagnostic provides evidence about current strengths and gaps, but the evide
 * [x] Defined PLAN / LEARN / BUILD / RESEARCH / CAPSTONE modes.
 * [x] Defined real-world/current-project preference.
 * [x] Defined master's-level target.
-* [x] Defined engineering competency spine.
-* [x] Defined supporting CS foundations.
-* [x] Defined evidence-based mastery levels.
-* [x] Defined diagnostic purpose.
-* [x] Defined just-in-time foundation strategy.
-* [x] Identified potential flagship project direction.
-* [x] Closed initial high-level planning phase.
-* [x] Established diagnostic as the next major milestone.
+* [x] Defined a practical diagnostic phase before substantial coursework.
 
 ## Diagnostic Progress
 
 ### Part A — System Design
 
-**Status: Completed**
+**Completed**
 
-Scenario:
+Evidence collected from an escrow transaction system design exercise.
 
-Fintech escrow transaction mini-app involving:
+Observed strengths:
 
-* transaction creation;
-* payment;
-* secured funds;
-* seller fulfillment;
-* buyer confirmation;
-* fund release.
+* Requirements and product-flow reasoning.
+* Domain-flow decomposition.
+* Practical API decomposition.
+* Recognition of idempotency as an important concern.
+* Identification of several meaningful failure scenarios.
 
-#### Observed Strengths
+Development areas:
 
-* Practical requirements instincts
-* Domain-flow modeling
-* API decomposition
-* Awareness of idempotency
-* Awareness of recovering frontend state from backend state
-
-#### Observed Gaps
-
-* Explicit assumption validation
-* Financial domain/data modeling
-* FE/BE responsibility boundaries
-* State-machine enforcement
-* Database transactions and constraints
-* Indexing
-* Concurrency
-* Distributed failure semantics
-* Retry safety
-* Source-of-truth reasoning
-* Risk-based testing
+* FE/BE responsibility boundaries.
+* State-machine enforcement.
+* Database transactions, constraints, and indexes.
+* Concurrency.
+* Distributed failure semantics.
+* Retry safety and source-of-truth reasoning.
 
 ### Part B — Quality Engineering
 
-**Status: Completed**
+**Completed**
 
-The learner was asked to reason about quality strategy for the same escrow system with limited QA capacity.
+Evidence collected from a fintech/escrow testing scenario.
 
-#### Observed Strengths
+Observed strengths:
 
-* Strong practical/domain-risk awareness
-* Awareness of regulatory/business failure
-* Familiarity with unit/integration/API/E2E/manual testing
-* Awareness of duplicate-operation risks
-* Awareness of auditability
-* Existing testing automation mindset
+* Financial/regulatory risk awareness.
+* Familiarity with multiple testing layers.
+* Duplicate-operation awareness.
+* Auditability awareness.
+* Practical automated-testing experience.
 
-A particularly useful observation was the learner's immediate concern that a seller might already be at a regulatory balance limit and therefore be unable to receive disbursed funds.
+Development areas:
 
-#### Observed Gaps
-
-* Risk-based test prioritization
-* Systematic test strategy
-* Failure/recovery testing
-* State-transition testing
-* Concurrency testing
-* Financial consistency testing
-* Test adequacy reasoning
-* Understanding limits of code coverage
-* Distinguishing QA as a role from quality as an engineering responsibility
-
-The learner initially prioritized:
-
-* payment success;
-* disbursement success.
-
-The learner proposed:
-
-> unit → integration → API → E2E → manual
-
-This shows familiarity with testing layers but suggests that test selection is currently more strongly driven by test type/order than by explicit risk analysis.
-
-The learner identified:
-
-* duplicate payment;
-* duplicate transaction creation;
-* payment failure;
-* auditability failure
-
-as edge cases.
-
-The learner was uncertain about whether 90% unit-test coverage would be enough to release and still viewed QA as a quality gate.
-
-This is useful evidence for developing stronger risk-based quality reasoning.
+* Risk-based test strategy.
+* Test adequacy.
+* Limitations of code coverage.
+* Concurrency/state-transition testing.
+* Failure/recovery testing.
+* Broader quality ownership beyond QA as a separate gate.
 
 ### Part C — Production Troubleshooting
 
-**Status: Completed**
+**Completed**
 
-Scenario:
+Evidence collected from a payment-provider success/internal-state mismatch
+incident scenario.
 
-A buyer paid Rp1,000,000.
+Observed strengths:
 
-* The payment provider reports `SUCCESS`.
-* The buyer sees "Payment successful".
-* The seller's transaction still shows `WAITING_FOR_PAYMENT`.
+* Trace ID / correlated-log instinct.
+* Recognition of webhook/callback failure.
+* Recognition of timeout and stale-state possibilities.
+* Incident-reporting and follow-up testing instincts.
+* Recognition that provider and internal state may need reconciliation.
 
-The learner was asked how they would investigate the incident, generate hypotheses, distinguish causes, recover the customer situation, and prevent recurrence.
+Development areas:
 
-#### Observed Strengths
+* End-to-end backend troubleshooting.
+* Distributed tracing.
+* Backend/database evidence gathering.
+* Reconciliation.
+* Safe recovery.
+* Distributed failure analysis.
 
-* Good instinct for trace IDs and correlated logs
-* Awareness that user actions and API calls should be traceable
-* Reasonable initial hypothesis generation
-* Awareness of callback failure/timeout possibilities
-* Awareness of cache invalidation as a possible cause
-* Willingness to acknowledge operational experience limitations
+### Part D — Database / SQL / Concurrency
 
-The learner's own assessment was that their end-to-end log investigation experience is limited and is currently more frontend-focused.
+**Completed**
 
-#### Observed Gaps
+Evidence collected from a PostgreSQL transaction-query and concurrent
+PAY/CANCEL scenario.
 
-The learner initially proposed refunding the buyer before establishing the actual system state.
+Observed strengths:
 
-This exposed a gap in safe financial recovery reasoning.
+* Recognized `status` as relevant to filtering.
+* Recognized concurrent state changes as a problem.
+* Recognized the concept of locking.
+* Demonstrated useful practical intuition despite weak formal database knowledge.
 
-A financial incident should first establish the relationship between:
+Development areas:
 
-* payment-provider state;
-* internal payment state;
-* escrow state;
-* database state;
-* relevant events/callbacks.
+* SQL correctness.
+* Index design.
+* PostgreSQL indexing.
+* Transactions.
+* Row-level locking.
+* Concurrency control.
+* Isolation and consistency.
+* Database constraints.
+* State-transition enforcement.
 
-The learner subsequently recognized that both the external payment provider and internal database can be authoritative for different aspects of the system, and that disagreement requires reconciliation.
+Important diagnostic conclusion:
 
-Important areas for development:
+> Database knowledge is currently one of the learner's weakest areas and
+> should receive substantial just-in-time foundation work in the eventual
+> curriculum.
 
-* backend incident investigation;
-* distributed tracing in practice;
-* backend/database evidence correlation;
-* system invariants;
-* reconciliation;
-* safe recovery;
-* distributed failure analysis;
-* incident response.
+Concurrency should be taught alongside database transactions and state
+management because the learner already recognizes the practical problem but
+does not yet have the formal tools to reason about it.
 
-### Initial Diagnostic Interpretation
+## Current Diagnostic Interpretation
 
-| Area                                   | Initial interpretation                                       |
-| -------------------------------------- | ------------------------------------------------------------ |
-| Requirements / product flow            | Relatively strong practical instinct                         |
-| Domain-flow reasoning                  | Good initial capability                                      |
-| API decomposition                      | Good practical starting point                                |
-| Business/regulatory risk awareness     | Strong practical instinct                                    |
-| State-machine thinking                 | Emerging                                                     |
-| FE/BE boundaries                       | Gap                                                          |
-| Failure-mode reasoning                 | Emerging                                                     |
-| Idempotency                            | Good instinct; theory needs development                      |
-| Database reasoning                     | Significant gap to investigate                               |
-| Concurrency                            | Not yet demonstrated                                         |
-| Distributed systems                    | Significant gap to investigate                               |
-| Quality strategy                       | Practical but currently test-layer/happy-path oriented       |
-| Risk-based testing                     | Needs development                                            |
-| Test adequacy / coverage reasoning     | Needs development                                            |
-| QA vs engineering quality ownership    | Needs development                                            |
-| Production troubleshooting             | Frontend-oriented; backend/distributed experience limited    |
-| Observability / tracing                | Good conceptual instinct; operational depth not demonstrated |
-| Incident investigation                 | Emerging                                                     |
-| Reconciliation / consistency reasoning | Significant gap to investigate                               |
-| Architecture evaluation                | Not yet assessed                                             |
+The learner's practical engineering instincts are generally stronger than
+their formal systems knowledge.
 
-These observations are provisional and should not yet be converted into final competency grades.
+This suggests the eventual curriculum should:
+
+1. Build theory underneath existing practical intuition.
+2. Avoid unnecessary repetition of basic software-development skills.
+3. Use realistic engineering scenarios.
+4. Connect CS foundations directly to production/system problems.
+5. Emphasize reasoning, trade-offs, and evidence rather than memorization.
+
+Current provisional gaps include:
+
+* software architecture;
+* FE/BE responsibility boundaries;
+* state-machine design;
+* database fundamentals;
+* SQL;
+* PostgreSQL;
+* transactions;
+* concurrency;
+* distributed systems;
+* risk-based testing;
+* test adequacy;
+* backend production troubleshooting;
+* reconciliation and consistency reasoning.
+
+Current strengths include:
+
+* requirements analysis;
+* practical product/domain flow;
+* API decomposition;
+* testing experience;
+* business-risk awareness;
+* idempotency intuition;
+* observability/tracing intuition;
+* practical debugging instincts.
 
 ## Formal Assessment
 
-No competency has been formally certified.
+### Completed
 
-The diagnostic is incomplete.
+* [x] Part A — System Design
+* [x] Part B — Quality Engineering
+* [x] Part C — Production Troubleshooting
+* [x] Part D — Database / SQL / Concurrency
+
+### Remaining Diagnostic Work
+
+* [ ] Part E — AI Engineering
+* [ ] Additional diagnostic areas only if needed after Part E
+* [ ] Consolidate diagnostic evidence
+* [ ] Build personalized competency map
+* [ ] Identify just-in-time CS foundations
+* [ ] Construct personalized curriculum
+* [ ] Define initial coursework
+* [ ] Select and validate project direction
 
 ## Projects
 
-No projects started.
+No formal projects started as part of the Master's program.
 
-Potential future flagship direction:
+Potential future flagship project:
 
-* QA automation/assistance system for environments with limited dedicated QA capacity.
+> A serious QA automation/assistance system motivated by the learner's
+> current team having limited QA personnel.
 
-This remains a candidate and is not yet committed.
+This remains a candidate direction, not a committed project.
 
 ## Research
 
-No research started.
-
-## Current Diagnostic Plan
-
-### Part D — CS Foundations
-
-Assess selected practical areas:
-
-* data structures and algorithms;
-* SQL/database reasoning;
-* networking;
-* concurrency;
-* operating systems;
-* probability/statistics.
-
-The goal is not to test every undergraduate topic.
-
-### Part E — AI Engineering
-
-Assess:
-
-* AI-system evaluation;
-* defining useful outcomes;
-* experiment design;
-* failure modes;
-* measurement;
-* limitations;
-* engineering trade-offs.
+No independent research started.
 
 ## Current Next Steps
 
-1. Complete Part D — CS Foundations.
-2. Complete Part E — AI Engineering.
-3. Analyze all diagnostic evidence.
-4. Build the detailed competency map.
-5. Identify foundation refresh requirements.
-6. Identify advanced competencies already demonstrated.
-7. Construct the personalized curriculum.
-8. Select the first learning/build project.
-9. Begin substantial coursework.
+1. Complete **Part E — AI Engineering** diagnostic.
+2. Consolidate evidence from the diagnostic.
+3. Identify strengths, theoretical gaps, and just-in-time foundations.
+4. Construct the personalized Master's competency map.
+5. Design the curriculum around demonstrated needs.
+6. Select the first substantial learning/build project.
 
 ## Important Rule
 
 Do not mark a competency as mastered merely because it was discussed.
 
-Record evidence such as:
+Record defensible evidence such as:
 
 * project artifact;
 * exam/oral explanation;
 * written analysis;
 * experiment;
 * research synthesis;
-* debugging investigation;
-* system design;
-* implementation;
-* another defensible assessment.
-
-## Program Principle
-
-The objective is not to maximize the number of topics completed.
-
-The objective is to develop durable master's-level capability that can be demonstrated through reasoning, engineering work, evidence, and independent investigation.
+* design review;
+* production investigation;
+* another appropriate assessment.
