@@ -6,7 +6,7 @@
 
 ## Stage
 
-**Master's Diagnostic — In Progress**
+**Curriculum Architecture — In Progress**
 
 ## Primary Goal
 
@@ -17,6 +17,33 @@ Build a self-directed, master's-level education focused on:
 * AI Engineering
 
 with a strong connection to real-world and current engineering problems.
+
+The program is intended to approximate the intellectual breadth, depth, and
+professional capability of a strong university master's-level education
+without university enrollment.
+
+## Planning Status
+
+The initial high-level planning phase is complete.
+
+The practical diagnostic phase is also complete.
+
+The program is now transitioning from:
+
+> diagnostic assessment → personalized curriculum architecture
+
+The detailed curriculum is intentionally **not fully locked yet**.
+
+The next planning step is to turn the personalized competency map into a
+concrete learning structure containing:
+
+* modules;
+* learning outcomes;
+* academic references;
+* practical exercises;
+* projects;
+* assessment methods;
+* realistic workload.
 
 ## User Profile
 
@@ -29,9 +56,10 @@ Desired future direction:
 * **70% Expert Software Engineer / IC track**
 * **30% Managerial / technical leadership capability**
 
-The goal is not primarily to become a manager. The priority is developing
-strong technical depth while gaining enough leadership and management
-capability to operate effectively as a technical lead.
+The goal is not primarily to become a manager.
+
+The priority is developing strong technical depth while gaining enough
+leadership capability to operate effectively as a technical lead.
 
 ### Current Strengths
 
@@ -39,7 +67,6 @@ The learner has substantial practical experience in:
 
 * Requirements analysis
 * System/API design
-* Database design
 * Code review
 * Refactoring
 * Automated testing
@@ -49,8 +76,8 @@ The learner has substantial practical experience in:
 * Technical/design decisions
 * Maintaining existing codebases
 
-The learner is stronger on the frontend side but has experience working
-across the broader software-development lifecycle.
+The learner is stronger on the frontend side but has experience across the
+broader software-development lifecycle.
 
 ### Development Areas
 
@@ -58,6 +85,7 @@ The learner wants to improve:
 
 * Full-stack engineering fluency
 * Backend engineering
+* Database engineering
 * System-level engineering
 * Software architecture
 * Technical decision-making
@@ -65,7 +93,7 @@ The learner wants to improve:
 * Engineering execution and time management
 * Technical leadership
 
-### Quality Engineering
+## Quality Engineering
 
 Current profile:
 
@@ -77,20 +105,58 @@ Current testing experience includes:
 * Vitest
 * Mocha
 * Sinon
-* Recent experimentation with Maestro
+* Maestro
 
 The learner's team has limited QA personnel, creating a potential real-world
 opportunity to investigate QA automation and quality engineering.
 
-### AI
+Quality Engineering is therefore both:
 
-The learner uses LLMs extensively but currently has limited understanding
-of underlying machine-learning theory.
+1. a major educational competency area; and
+2. a potential source of a future real-world project.
 
-AI learning should eventually include foundational ML concepts rather than
-focusing primarily on prompt usage or application-level techniques.
+The diagnostic indicates that the learner has useful practical testing
+experience but needs deeper theory around:
 
-### Academic / CS Foundations
+* risk-based testing;
+* test adequacy;
+* quality measurement;
+* state-transition testing;
+* concurrency testing;
+* failure/recovery testing;
+* reliability.
+
+## AI
+
+The learner uses LLMs extensively, including AI-assisted software
+development.
+
+The diagnostic indicates:
+
+### Strengths
+
+* skepticism toward unsupported AI accuracy claims;
+* awareness of hallucination;
+* awareness that LLMs make assumptions;
+* awareness that more generated tests do not necessarily mean better QA;
+* emerging understanding of evaluation and coverage.
+
+### Development areas
+
+* LLM mental model;
+* machine-learning foundations;
+* statistical/probabilistic reasoning;
+* AI-system architecture;
+* model/system evaluation;
+* retrieval and grounding;
+* tool use and agents;
+* AI reliability;
+* experimental evaluation.
+
+AI learning should therefore go beyond prompt engineering and practical API
+usage.
+
+## Academic / CS Foundations
 
 The learner has a Bachelor's degree in Informatics Engineering, completed
 more than a decade ago.
@@ -106,17 +172,14 @@ Current self-assessment:
 * Probability/statistics — weak
 * Discrete mathematics — weak
 
-Diagnostic evidence now confirms that **databases are a significant practical
-and theoretical gap**, while concurrency is an area where the learner has
-useful practical intuition but limited formal knowledge.
+The diagnostic confirms that **databases and concurrency are immediate
+priority gaps**.
 
-These foundations should be treated as potentially rusty foundations, not
-automatically as zero knowledge. Diagnostic exercises should distinguish:
+These foundations should not be treated as a reason to repeat an entire
+undergraduate CS curriculum.
 
-* forgotten knowledge;
-* practical knowledge without theoretical grounding;
-* genuine gaps;
-* low-priority gaps that can be deferred.
+Instead, foundations should be learned or refreshed just in time for the
+higher-level engineering competencies they support.
 
 ## Engineering Environment
 
@@ -198,13 +261,37 @@ A typical feature involves:
 4. Developers perform happy-path testing.
 5. QA may be consulted where available.
 6. QA capacity is limited.
-7. Frontend deployment is often self-service through an established and stable system.
+7. Frontend deployment is often self-service through an established and stable
+   system.
 8. Backend deployment is more dependent on infrastructure developers / SRE,
    with the backend deployment system still emerging.
+
+This environment provides useful real-world context for studying:
+
+* requirements;
+* estimation;
+* system design;
+* frontend/backend boundaries;
+* testing;
+* quality engineering;
+* deployment;
+* reliability;
+* observability;
+* production troubleshooting;
+* technical decision-making.
 
 ## Real-World Case Study: Escrow Mini App
 
 A recent example is a new mini app for an **escrow transaction**.
+
+The system involves:
+
+1. transaction creation;
+2. payment;
+3. funds being secured;
+4. seller shipment/fulfillment;
+5. buyer confirmation;
+6. fund release.
 
 ### Team / Ownership
 
@@ -233,13 +320,16 @@ Backend:
 
 ### Engineering Significance
 
-This case provides a useful real-world example for future study of:
+This case provides useful material for studying:
 
-* estimation;
 * requirements;
+* estimation;
 * FE/BE ownership;
 * full-stack system understanding;
-* software quality;
+* state machines;
+* database design;
+* transactions;
+* concurrency;
 * testing strategy;
 * risk-based testing;
 * deployment;
@@ -247,27 +337,25 @@ This case provides a useful real-world example for future study of:
 * production reliability;
 * technical decision-making.
 
-Because escrow involves transactions, future analysis should pay particular
-attention to failure modes beyond the happy path.
-
 This case study is **not currently a committed project**.
 
 ## Potential Flagship Project
 
-A strong candidate for a future major project is:
+A potential future flagship project is:
 
-> Build a serious software system that automates or assists QA processes,
-> motivated by the learner's current team having limited QA personnel.
+> A serious software system that automates or assists QA processes in an
+> environment with limited dedicated QA capacity.
 
-This is currently a **candidate direction, not a committed project**.
+This remains a **candidate direction, not a commitment**.
 
-The project should eventually be evaluated against:
+The project must eventually be evaluated against:
 
 * real team/business value;
 * technical depth;
 * current relevance;
-* opportunities to apply Software Engineering and Quality Engineering;
-* opportunities to incorporate AI where genuinely useful;
+* Software Engineering application;
+* Quality Engineering application;
+* possible AI application;
 * measurable outcomes;
 * potential for later research.
 
@@ -277,396 +365,136 @@ The project should begin with:
 
 > problem → evidence → requirements → design → implementation → measurement
 
-rather than choosing a technology first and looking for a problem afterward.
+rather than choosing technology first.
 
-## Curriculum Strategy
+## Personalized Competency Map
 
-Use two interacting tracks.
+The diagnostic indicates that the learner's practical engineering instincts
+are generally stronger than their formal systems knowledge.
 
-### Engineering Track
-
-Software Engineering
-→ Architecture & Systems
-→ Quality & Reliability
-→ AI Engineering
-→ Intelligent Software Systems
-→ Independent Research
-
-### Foundations Track
-
-* Algorithms/data structures
-* Databases
-* Networking
-* Operating systems
-* Concurrency
-* Distributed systems
-* Probability/statistics
-* Discrete mathematics
-
-Foundations should be learned or refreshed **just in time** where possible,
-rather than forcing the learner through a complete undergraduate CS curriculum
-again.
-
-The diagnostic is intended to determine which foundations require deeper
-study and which can be refreshed only when needed.
-
-## Master's-Level Assessment Model
-
-The target is approximately the level expected from a strong university
-master's graduate.
-
-Assessment should focus on demonstrated capability rather than topic
-completion.
-
-Proposed progression:
-
-### Level 1 — Understand
-
-Can explain concepts accurately.
-
-### Level 2 — Apply
-
-Can apply concepts to well-defined engineering problems.
-
-### Level 3 — Analyze
-
-Can diagnose unfamiliar problems and reason about causes.
-
-### Level 4 — Evaluate
-
-Can compare competing approaches and evaluate evidence and trade-offs.
-
-### Level 5 — Synthesize
-
-Can integrate multiple concepts to solve complex/open-ended problems.
-
-### Level 6 — Investigate
-
-Can independently formulate and investigate a meaningful question using
-appropriate evidence and methodology.
-
-The eventual Master's target is primarily **Levels 5–6**, supported by strong
-Levels 3–4 across the relevant engineering competencies.
-
-No competency should be marked as mastered merely because it was discussed.
-
-## Diagnostic Phase
-
-Before beginning substantial coursework, conduct a practical diagnostic
-phase using realistic engineering problems rather than primarily
-recall-based questions.
-
-The diagnostic assesses:
-
-* engineering reasoning;
-* system/design thinking;
-* architectural reasoning;
-* testing/quality reasoning;
-* debugging and production reasoning;
-* CS foundations;
-* AI engineering understanding;
-* ability to evaluate trade-offs;
-* ability to explain and defend decisions.
-
-The diagnostic should distinguish:
-
-* already strong;
-* rusty and requiring refresh;
-* practical but theoretically weak;
-* important genuine gap;
-* low-priority gap that can be deferred.
-
-The learner does **not** need to pass the diagnostic before starting.
-
-The diagnostic exists to personalize the curriculum.
-
-## Diagnostic Results So Far
-
-### Part A — System Design
-
-**Status: Completed**
-
-Scenario focused on designing an escrow transaction system.
-
-Observed strengths:
-
-* Good practical requirements/product-flow instincts.
-* Good understanding of the major escrow domain flow.
-* Reasonable API decomposition.
-* Recognized idempotency as important for duplicate payment/release operations.
-* Able to identify several meaningful failure scenarios.
-
-Observed gaps:
-
-* FE/BE responsibility boundaries were unclear.
-* State-machine enforcement was not yet understood.
-* Database transactions, constraints, and indexes were weak.
-* Concurrency was not yet demonstrated.
-* Distributed failure semantics and retry safety require development.
-* Source-of-truth reasoning requires development.
-
-### Part B — Quality Engineering
-
-**Status: Completed**
-
-Observed strengths:
-
-* Strong domain/regulatory risk instinct.
-* Recognizes financial/disbursement risks.
-* Familiar with unit, integration, API, E2E, and manual testing layers.
-* Recognizes duplicate operations and auditability as important edge cases.
-* Comfortable with automated testing concepts.
-
-Observed gaps:
-
-* Testing strategy is still strongly happy-path/test-layer oriented.
-* Risk-based test strategy requires development.
-* Test adequacy and the limitations of code coverage require development.
-* Concurrency and state-transition testing require development.
-* Failure/recovery testing requires development.
-* QA versus overall engineering quality ownership requires deeper reasoning.
-
-### Part C — Production Troubleshooting
-
-**Status: Completed**
-
-Scenario:
-
-> Payment provider reports SUCCESS and the buyer sees payment success, but
-> the seller still sees WAITING_FOR_PAYMENT.
-
-Observed strengths:
-
-* Good instinct to use trace IDs and correlated logs.
-* Identified callback/webhook failure as a plausible cause.
-* Identified timeout as a possible cause.
-* Identified stale cache/state as a possible cause.
-* Recognized the need for detailed incident analysis and test coverage.
-
-Important development areas:
-
-* Current troubleshooting experience is more frontend-oriented.
-* Need deeper end-to-end backend investigation skills.
-* Need to trace the full path:
-  buyer action → frontend request → payment provider → callback/webhook
-  → backend → database → escrow state.
-* Recovery should not be chosen before establishing the actual system state.
-* Provider state and internal application state may each be authoritative for
-  different domains and need reconciliation when they disagree.
-* Need stronger understanding of distributed failure analysis,
-  observability, reconciliation, and safe recovery.
-
-Follow-up reasoning demonstrated an important emerging concept:
-
-> If the payment provider says SUCCESS while the application database says
-> WAITING_FOR_PAYMENT, the correct response is not simply to trust one source;
-> determine what each system is authoritative for and reconcile the mismatch.
-
-### Part D — Database / SQL / Concurrency
-
-**Status: Completed**
-
-Scenario:
-
-* `transactions` contains:
-
-  * `id`
-  * `buyer_id`
-  * `seller_id`
-  * `amount`
-  * `status`
-  * `created_at`
-* Approximately one million transactions.
-* Query all transactions for seller `S123` with
-  `WAITING_FOR_PAYMENT`, newest first.
-* Consider concurrent PAY and CANCEL requests for the same transaction.
-
-Observed answer:
-
-The learner initially wrote a query using `id = S123`, then recognized the
-need for instruction around database concepts.
-
-The corrected query is conceptually:
-
-```sql
-SELECT *
-FROM transactions
-WHERE seller_id = 'S123'
-  AND status = 'WAITING_FOR_PAYMENT'
-ORDER BY created_at DESC;
-```
-
-Observed strengths:
-
-* Recognized that `status` is relevant to query filtering.
-* Recognized that concurrent PAY and CANCEL operations can create an invalid
-  or confusing state.
-* Recognized the concept of database locking from prior exposure.
-* Understands the problem intuitively even without knowing the formal mechanisms.
-
-Observed gaps:
-
-* SQL query correctness needs practice.
-* Index design is a significant gap.
-* PostgreSQL indexing is a significant gap.
-* Database transactions are a significant gap.
-* Row-level locking is not yet understood sufficiently to apply independently.
-* Concurrency control needs formal study.
-* State-transition enforcement needs formal study.
-* Consistency and isolation require development.
-* Database modeling and constraints require development.
-
-The query suggests a composite index such as:
-
-```sql
-CREATE INDEX idx_transactions_seller_status_created
-ON transactions (seller_id, status, created_at DESC);
-```
-
-This example should be treated as a teaching example, not as evidence that
-the learner has mastered index design.
-
-### Current Diagnostic Interpretation
-
-The learner's practical engineering instincts are consistently stronger than
-their formal systems knowledge.
-
-This suggests the curriculum should:
+The curriculum should therefore:
 
 * teach theory underneath existing practical intuition;
-* avoid reteaching basic software development unnecessarily;
+* avoid unnecessary repetition of basic software-development skills;
 * use realistic engineering scenarios;
 * connect CS foundations directly to production/system problems;
-* emphasize reasoning over memorization.
+* emphasize reasoning, trade-offs, and evidence;
+* use projects to integrate multiple competencies.
 
-Current provisional assessment:
+### 1. Software Engineering & Architecture
 
-| Area                               | Current assessment                                           |
-| ---------------------------------- | ------------------------------------------------------------ |
-| Requirements / product flow        | Relatively strong practical instinct                         |
-| API decomposition                  | Good practical understanding                                 |
-| Domain-flow reasoning              | Good                                                         |
-| Business / regulatory risk         | Strong instinct                                              |
-| State machines                     | Emerging                                                     |
-| FE/BE boundaries                   | Gap                                                          |
-| Idempotency                        | Good instinct; theory needs development                      |
-| Database reasoning                 | Significant gap                                              |
-| SQL                                | Needs development                                            |
-| Indexes                            | Significant gap                                              |
-| Transactions                       | Significant gap                                              |
-| Concurrency                        | Good problem intuition; weak formal knowledge                |
-| Distributed systems                | Significant gap                                              |
-| Quality strategy                   | Practical, but currently test-layer/happy-path oriented      |
-| Risk-based testing                 | Needs development                                            |
-| Test adequacy / coverage reasoning | Needs development                                            |
-| Production troubleshooting         | Frontend-oriented; backend depth limited                     |
-| Observability / tracing            | Good conceptual instinct; operational depth not demonstrated |
-| Incident investigation             | Emerging                                                     |
-| Reconciliation / consistency       | Significant gap                                              |
-| Architecture evaluation            | Not yet assessed                                             |
-| AI engineering                     | Not yet assessed                                             |
+**Current:** practical foundation with important theoretical gaps.
 
-These are **diagnostic observations, not mastery ratings**.
+Priority areas:
 
-## Academic Evidence Policy
+* software architecture;
+* architectural decomposition;
+* modularity;
+* interfaces/contracts;
+* state-machine design;
+* domain modeling;
+* quality attributes;
+* architectural trade-offs;
+* scalability;
+* resilience;
+* observability;
+* technical decision-making;
+* technical debt and evolution.
 
-Use substantial real academic and authoritative material.
+### 2. Data, Transactions & Concurrency
 
-For academic, scientific, technical, or current claims:
+**Current:** significant gap; highest immediate foundation priority.
 
-* Prefer primary sources.
-* Prefer peer-reviewed research where appropriate.
-* Use established textbooks for foundational material.
-* Use standards and official documentation for technical standards/practices.
-* Use current sources for rapidly changing areas such as AI.
-* Verify citations.
-* Never invent papers, books, authors, results, quotations, or DOIs.
-* Clearly distinguish evidence, interpretation, uncertainty, and opinion.
+Priority areas:
 
-The program must not become simply:
+* SQL;
+* relational modeling;
+* PostgreSQL;
+* indexes;
+* query planning;
+* constraints;
+* transactions;
+* ACID;
+* isolation;
+* row-level locking;
+* optimistic concurrency;
+* pessimistic concurrency;
+* race conditions;
+* state transitions;
+* invariants;
+* idempotency;
+* consistency.
 
-> "ChatGPT teaches the learner."
+This should be taught as an integrated area rather than isolated SQL lessons.
 
-ChatGPT should function as an academic and engineering partner that helps
-with explanation, questioning, critique, literature navigation, project
-design, and research methodology.
+### 3. Distributed Systems
 
-## Project Philosophy
+**Current:** significant gap.
 
-Projects should:
+Priority areas:
 
-* address realistic engineering problems;
-* preferably use current or emerging technology/problems;
-* create an artifact or measurable result;
-* require explicit engineering decisions;
-* expose limitations and trade-offs;
-* connect theory to practice;
-* become progressively more open-ended.
+* network failure;
+* timeouts;
+* retries;
+* duplicate messages;
+* asynchronous processing;
+* queues;
+* consistency;
+* distributed state;
+* service boundaries;
+* reconciliation;
+* failure recovery;
+* observability;
+* distributed tracing.
 
-The learner prefers serious projects connected to real-world problems.
+### 4. Quality Engineering & Reliability
 
-## Program Modes
+**Current:** practical strength with theoretical gaps.
 
-### PLAN
+Priority areas:
 
-Design and revise the program, curriculum, projects, assessment, and research direction.
+* risk-based testing;
+* test adequacy;
+* state-transition testing;
+* property-based testing;
+* mutation testing;
+* concurrency testing;
+* failure injection;
+* reliability;
+* performance;
+* security testing;
+* observability;
+* incident response;
+* quality measurement.
 
-### LEARN
+### 5. AI Engineering
 
-Study concepts, literature, standards, books, papers, and examples.
+**Current:** strong practical exposure with significant theoretical gaps.
 
-### BUILD
+Priority areas:
 
-Apply knowledge to a realistic engineering project.
-
-### RESEARCH
-
-Investigate an open or contested question using evidence and a defined method.
-
-### CAPSTONE
-
-Complete an independent master's-level project or thesis-like investigation.
-
-## Repository Operating Rule
-
-The GitHub repository is the persistent source of truth.
-
-ChatGPT conversations are working sessions.
-
-At the end of every meaningful session:
-
-1. Identify which repository files need updating.
-2. Provide the **complete contents** of each file that needs updating.
-3. Do not require the learner to manually locate a section and merge changes.
-4. Do not mark competencies as completed without evidence.
-5. Keep `CURRENT.md` synchronized with the latest program state.
-
-`CURRENT.md` is the primary session boot file.
-
-## Next Session
-
-Continue the **Master's Diagnostic** with:
-
-### Part E — AI Engineering
-
-Assess:
-
-* practical understanding of LLM/AI systems;
-* model/API concepts;
-* prompting versus engineering;
+* ML foundations;
+* probability/statistics;
+* neural networks;
+* transformers;
+* language models;
+* embeddings;
+* retrieval;
+* RAG;
+* tool use;
+* agents;
+* AI-system architecture;
 * evaluation;
 * reliability;
-* hallucination and uncertainty;
-* AI system architecture;
-* retrieval/tool use/agents;
-* understanding of underlying ML concepts;
-* ability to reason about trade-offs and failure modes.
+* safety/security;
+* cost/latency trade-offs.
 
-Do not assume that extensive practical LLM usage implies theoretical AI
-understanding.
+### 6. AI + Software Quality
 
-After Part E, continue the diagnostic only where additional evidence is
-needed before constructing the personalized curriculum.
+**Current:** promising interdisciplinary area; not yet developed formally.
 
-Do not begin substantial coursework until the learner explicitly decides
-to start.
+Priority areas:
+
+* AI test generation;
+* evaluation methodology;
+* benchmark desi*
